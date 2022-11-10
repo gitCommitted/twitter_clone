@@ -1,7 +1,4 @@
 # twitter_clone
-# **StackOverflow Clone**
-
-Welcome to our StackOverflow clone, created by the Boolean Bullies team. Checkout our live site by clicking [StackOverflow_clone](https://stackoverflow-bb.herokuapp.com/).
 
 ## **Technologies Used**
 For this project, we used the following technologies:
@@ -37,39 +34,17 @@ For this project, we used the following technologies:
 8. run `npm start` to start the frontend
 9. go to [localhost:3000](localhost:3000) in your browser
 
-## **Screen Shots**
-### Landing Page
-<img src='./react-app/public/images/landing_page.png'>
-
-### Sign up Modal
-<img src='./react-app/public/images/sign_up.png'>
-
-### Question Detail Page
-<img src='./react-app/public/images/question_detail.png'>
-
 ## **Features**
 - Signup
 - Login
 - Demo user with full functionality
-- View all Questions
-- View only your Questions and your Answers
-- Answer any Question you didn't ask
-- Vote on any Answer
-- Comment on Any Answer
-- Update or Delete only a Question that you asked
-- Update or Delete only an Answer you posted
-- Delete any comment you made
-- Clear your vote and re-vote
+- View all Tweets
 
 ## Future additions
-- Search bar to search questions
-- Add categories for questions based on topics
+- Search bar to search tweets
 
-## Team Members
- - [Ellie Billerbeck](https://github.com/elnorabills)
+## Developed By
  - [Isaac Darzi](https://github.com/gitCommitted)
- - [Keith Glines](https://github.com/Kglines)
- - [Scotty Wong](https://github.com/scottywong)
 
 # **API Documentation**
 ### Backend Routes
@@ -84,8 +59,8 @@ POST create new user
 ### /auth/logout
 DELETE user session
 
-### /users/questions
-GET my questions
+### /users/tweets
+GET my tweets
 
 Require Authentication: TRUE
 
@@ -99,13 +74,12 @@ Require Authentication: TRUE
 
 ```
 {
-    "Questions" :
+    "Tweets" :
     [
         {
             "id": 1,
             "userId": 1,
             "username": "demo",
-            "title": "Sample Title",
             "body": "Sample Body",
             "created_on":  "2022-12-12", 
             "last_update_on": "2022-12-12"
@@ -114,7 +88,6 @@ Require Authentication: TRUE
             "id": 2,
             "userId": 1,
             "username": "demo",
-            "title": "Sample Title",
             "body": "Sample Body",
             "created_on":  "2022-12-12", 
             "last_update_on": "2022-12-12"
@@ -123,8 +96,8 @@ Require Authentication: TRUE
 }  
 ```
 
-### /users/answers
-GET my answers
+### /users/comments
+GET my Comments
 
 Require Authentication: TRUE
 
@@ -138,13 +111,13 @@ Status Code: 200
 Require Authentication: TRUE
 ```
 {
-    "Answers" :
+    "Comments" :
     [
         {
             "id": 1,
             "userId": 1,
             "username": "demo",
-            "questionId":1,
+            "tweetId":1,
             "body": "Sample Body",
             "created_on":  "2022-12-12", 
             "last_update_on": "2022-12-12"
@@ -153,7 +126,7 @@ Require Authentication: TRUE
             "id": 2,
             "userId": 1,
             "username": "demo",
-            "questionId":1,
+            "tweetId":1,
             "body": "Sample Body",
             "created_on":  "2022-12-12", 
             "last_update_on": "2022-12-12"
@@ -162,8 +135,8 @@ Require Authentication: TRUE
 }
 ```                                         
 
-### /questions
-GET all questions
+### /tweets
+GET all tweets
 
 Require Authentication: TRUE
 
@@ -176,39 +149,49 @@ Status Code: 200
 
 ```
 {
-    "Questions" :
+    "Tweets" :
     [
         {
             "id": 1,
             "userId": 1,
             "username": "demo",
-            "title": "Sample Title",
             "body": "Sample Body",
             "created_on":  "2022-12-12", 
             "last_update_on": "2022-12-12"
+            "Likes" :
+            {
+                total: 3
+                iLiked: False
+            },
+            "totalComments" : 7
+            
         },
         {
             "id": 2,
             "userId": 2,
             "username": "demo",
-            "title": "Sample Title",
             "body": "Sample Body",
             "created_on":  "2022-12-12", 
             "last_update_on": "2022-12-12"
+            "Likes" :
+            {
+                total: 3
+                iLiked: False
+            },
+            "totalComments" : 7
         }
     ]
 }
 ```
 
-### /questions
-POST a new question
+### /tweets
+POST a new tweet
 
 Require Authentication: TRUE
 
 Request Body
 ```
 {
-    "title": "Sample Title",
     "body": "Sample Body"
 }
 ```
@@ -222,15 +205,14 @@ Status Code: 201
     "id": 2,
     "userId": 2,
     "username": "demo",
-    "title": "Sample Title",
     "body": "Sample Body",
     "created_on":  "2022-12-12", 
     "last_update_on": "2022-12-12"
 }
 ```
 
- ### /questions/:questionId
-GET a specific question and it's associated answers, cumulative votes, and comments
+ ### /tweets/:tweetId
+GET a specific tweet and it's associated comments, and cumulative likes
 
 Require Authentication: TRUE
 
@@ -240,56 +222,38 @@ Status Code: 200
 
 ```
 {
-    "Question" :
+    "Tweets" :
     {
         "id": 1,
         "userId": 1,
         "username": "demo",
-        "title": "Sample Title",
         "body": "Sample Body",
         "created_on":  "2022-12-12", 
         "last_update_on": "2022-12-12",
-        "Answers" :
+        "Likes" :
+            {
+                total: 3
+                iLiked: False
+            },
+        "Comments" :
         [
             {
                 "id": 1,
                 "userId": 1,
                 "username": "demo",
-                "questionId":1,
+                "tweetId":1,
                 "body": "Sample Body",
                 "created_on":  "2022-12-12", 
                 "last_update_on": "2022-12-12",
-                "Comments": 
-                [
-                    {
-                        "id": 1,
-                        "userId": 1,
-                        "username": "demo",
-                        "answerId": 1,
-                        "body": "Sample Body"
-                    },
-                    {
-                        "id": 2,
-                        "userId": "1",
-                        "username": "demo",
-                        "answerId": "1",
-                        "body": "Sample Body"
-                    }
-                ],
-                "Votes": 
-                {
-                    "hasVoted" : false,
-                    "total" : -1,
-                    "voteId" : Null
-                }
+                
             }
         ]
     }
 }  
 ```    
 
-### /questions/:questionId
-PUT to update a specific question
+### /tweets/:tweetId
+PUT to update a specific tweet
 
 Require Authentication: TRUE
 
@@ -297,7 +261,6 @@ Request Body
 
 ```
 {
-    "title": "Sample Title",
     "body": "Sample Body"
 }
 ```
@@ -313,15 +276,14 @@ Require Authentication: TRUE
     "id": 2,
     "userId": 2,
     "username": "demo",
-    "title": "Sample Title",
     "body": "Sample Body",
     "created_on":  "2022-12-12", 
     "last_update_on": "2022-12-12"
 }
 ```
 
-### /questions/:questionId
-DELETE a specific question
+### /tweets/:tweetId
+DELETE a specific tweet
 
 Require Authentication: TRUE
 
@@ -340,8 +302,8 @@ Status Code: 200
 }
 ```
 
-### /questions/:questionId/answers
-POST a new answer
+### /tweets/:tweetId/comment
+POST a new comment
 
 Require Authentication: TRUE
 
@@ -361,85 +323,7 @@ Status Code: 201
     "id": 2,
     "userId": 2,
     "username": "demo",
-    "questionId": 1,
-    "body": "Sample Body",
-    "created_on":  "2022-12-12", 
-    "last_update_on": "2022-12-12"
-}
-```
-
-### /answers/:answerId
-PUT to update a specific answer
-
-Require Authentication: TRUE
-
-Request Body
-
-```
-{
-    "body": "Sample Body"
-}
-```
-
-Response Body
-
-Status Code: 200
-
-```
-{
-    "id": 2,
-    "userId": 2,
-    "username": "demo",
-    "questionId": 1,
-    "body": "Sample Body",
-    "created_on":  "2022-12-12", 
-    "last_update_on": "2022-12-12"
-}
-```
-
-### /answers/:answerId
-
-DELETE a specific answer
-
-Require Authentication: TRUE
-
-Request Body
-N/A
-
-Response Body
-
-Status Code: 200
-
-```
-{
-    "message": "Delete Successfully",
-    "Status Code": 200
-}
-```
-
-### /answers/:answerId/comments
-
-POST a new comment
-
-Require Authentication: TRUE
-
-Request Body
-```
-{
-    "body": "Sample Body"
-}
-```
-
-Response Body
-
-Status Code: 200
-
-```
-{
-    "id": 2,
-    "userId": 2,
-    "username": "demo",
-    "answerId": 1,
+    "tweetId": 1,
     "body": "Sample Body",
     "created_on":  "2022-12-12", 
     "last_update_on": "2022-12-12"
@@ -447,28 +331,28 @@ Status Code: 200
 ```
 
 ### /comments/:commentId
-
 PUT to update a specific comment
 
 Require Authentication: TRUE
 
 Request Body
+
 ```
 {
     "body": "Sample Body"
 }
-
 ```
 
 Response Body
 
 Status Code: 200
+
 ```
 {
     "id": 2,
     "userId": 2,
     "username": "demo",
-    "answerId": 1,
+    "tweetId": 1,
     "body": "Sample Body",
     "created_on":  "2022-12-12", 
     "last_update_on": "2022-12-12"
@@ -485,6 +369,7 @@ Request Body
 N/A
 
 Response Body
+
 Status Code: 200
 
 ```
@@ -494,9 +379,56 @@ Status Code: 200
 }
 ```
 
-### /answers/:answerId/votes
+### /tweets/:tweetId/likes
 
-POST a vote direction for a specific user on a specific answer
+POST a new like
+
+Require Authentication: TRUE
+
+Request Body
+```
+{
+    "body": "like"
+}
+```
+
+Response Body
+
+Status Code: 200
+
+```
+{
+    "id": 2,
+    "userId": 2,
+    "username": "demo",
+    "tweetId": 1,
+    "created_on":  "2022-12-12", 
+    "last_update_on": "2022-12-12"
+}
+```
+
+### /likes/:likeId
+
+DELETE a specific like
+
+Require Authentication: TRUE
+
+Request Body
+N/A
+
+Response Body
+Status Code: 200
+
+```
+{
+    "message": "Delete Successfully",
+    "Status Code": 200
+}
+```
+
+### /users/:userId/follows
+
+POST a new follow for the current user on a specific user 
 
 Require Authentication: TRUE
 
@@ -504,7 +436,7 @@ Request Body
 
 ```
 {
-    "voteDirection": 'Up'
+    "follow": 'Y'
 }
 ```
 
@@ -521,8 +453,8 @@ Status Code: 200
 }
     
 ```
-### /votes/:voteId
-DELETE a specific vote
+### /follows/:followId
+DELETE a specific follow
 
 Require Authentication: TRUE
 
