@@ -10,7 +10,7 @@ class Like(db.Model):
     created_on = db.Column(db.Date, default=datetime.utcnow)
     updated_on = db.Column(db.Date, onupdate=datetime.utcnow)
 
-    user = db.relationship('User', back_populates='votes')
+    user = db.relationship('User', back_populates='likes')
     tweet = db.relationship('Tweet', back_populates='likes')
 
 
