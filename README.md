@@ -16,6 +16,9 @@ DELETE user session
 ### /users/tweets
 GET my tweets
 
+### /users/replies
+GET my replies
+
 Require Authentication: TRUE
 
 Request Body:
