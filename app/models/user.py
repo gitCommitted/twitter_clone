@@ -18,8 +18,8 @@ class User(db.Model, UserMixin):
     tweets = db.relationship('Tweet', back_populates='user',cascade='all, delete-orphan')
     replies = db.relationship('Reply', back_populates='user',cascade='all, delete-orphan')
     likes = db.relationship('Like', back_populates='user',cascade='all, delete-orphan')
-    follows = db.relationship('Follower', back_populates='user',cascade='all, delete-orphan')
-    followers = db.relationship('Follower', back_populates='follower',cascade='all, delete-orphan')
+    follows = db.relationship('Follower', back_populates='user',cascade='all, delete-orphan', foreign_keys='Follower.userId')
+    followers = db.relationship('Follower', back_populates='follower',cascade='all, delete-orphan', foreign_keys='Follower.followerId')
 
     @property
     def password(self):
