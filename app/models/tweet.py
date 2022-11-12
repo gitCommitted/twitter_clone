@@ -1,7 +1,5 @@
 from .db import db
-from .answer import Answer
-from .comment import Comment
-from .vote import Vote
+
 from .user import User
 from datetime import datetime
 
