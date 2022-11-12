@@ -9,7 +9,17 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    bio = db.Column(db.String(255))
+    pic = db.Column(db.String(255))
+    image = db.Column(db.String(255))
+    verified = db.Column(db.Boolean, nullable=False, default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    tweets = db.relationship('Tweet', back_populates='user',cascade='all, delete-orphan')
+    replies = db.relationship('Reply', back_populates='user',cascade='all, delete-orphan')
+    likes = db.relationship('Like', back_populates='user',cascade='all, delete-orphan')
+    follows = db.relationship('Follower', back_populates='user',cascade='all, delete-orphan')
+    followers = db.relationship('Follower', back_populates='follower',cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -26,5 +36,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            "pic": self.pic,
+            "image": self.image,
+            "verified": self.verified
         }
