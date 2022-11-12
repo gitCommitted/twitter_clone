@@ -10,8 +10,8 @@ class Follower(db.Model):
     created_on = db.Column(db.Date, default=datetime.utcnow)
     updated_on = db.Column(db.Date, onupdate=datetime.utcnow)
 
-    user = db.relationship('User', back_populates='follows')
-    follower = db.relationship('User', back_populates='followers')
+    user = db.relationship('User', back_populates='follows', foreign_keys=[userId])
+    follower = db.relationship('User', back_populates='followers', foreign_keys=[followerId])
 
 
     def to_dict(self):
