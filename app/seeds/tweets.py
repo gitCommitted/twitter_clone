@@ -2,27 +2,27 @@ from app.models import db, Tweet
 
 def seed_tweets():
     tweet1 = Tweet(
-        user_id=1,
+        userId=1,
         body="I'm a tweet"
     )
     tweet2 = Tweet(
-        user_id=1,
+        userId=1,
         body="I'm another tweet"
     )
     tweet3 = Tweet(
-        user_id=2,
+        userId=2,
         body="I'm a tweet also"
     )
     tweet4 = Tweet(
-        user_id=2,
+        userId=2,
         body="I'm another test tweet"
     )
     tweet5 = Tweet(
-        user_id=3,
+        userId=3,
         body="I'm a test tweet"
     )
     tweet6 = Tweet(
-        user_id=3,
+        userId=3,
         body="I'm another tweeter tester"
     )
     db.session.add(tweet1)
