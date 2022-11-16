@@ -107,16 +107,21 @@ def unlike_tweet(id):
 
 # Reply to a tweet
 @tweet_routes.route('/<int:id>/reply', methods=['POST'])
-def reply_tweet(id):
+@login_required
+def create_reply(id):
     tweet = Tweet.query.get(id)
-    reply = Reply(
-        userId = current_user.id,
-        body = request.json['body'],
-        tweetId = tweet.id
-    )
-    db.session.add(reply)
-    db.session.commit()
-    return reply.to_dict()
+    form = ReplyForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        reply = Reply(
+            body=form.data['body'],
+            userId=current_user.id,
+            tweetId=tweet.id
+        )
+        db.session.add(reply)
+        db.session.commit()
+        return reply.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 
