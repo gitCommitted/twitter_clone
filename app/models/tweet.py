@@ -1,7 +1,8 @@
 from .db import db
-
+from .like import Like
 from .user import User
 from datetime import datetime
+from flask_login import current_user
 
 class Tweet(db.Model):
     __tablename__ = 'tweets'
@@ -22,11 +23,31 @@ class Tweet(db.Model):
         user = User.query.filter(User.id == self.userId).first()
         return user.username
 
+    def get_userPic(self):
+        user = User.query.filter(User.id == self.userId).first()
+        return user.pic
+    
+    def get_userVerified(self):
+        user = User.query.filter(User.id == self.userId).first()
+        return user.verified
+
+    def get_likes(self):
+        return len(self.likes)
+    
+    def you_liked(self):
+        liked = True
+        getLikes = Like.query.filter(Like.userId == current_user.id).filter(Like.tweetId == self.id).first()
+        if getLikes is None:
+            liked = False
+        return liked
+    
     def to_dict(self):
         return {
             'id': self.id,
             'userId': self.userId,
             'username': self.get_user(),
+            'userPic': self.get_userPic(),
+            'userVerified': self.get_userVerified(),
             'body': self.body,
             'image': self.image,
             'created_on': self.created_on,
@@ -38,9 +59,16 @@ class Tweet(db.Model):
             'id': self.id,
             'userId': self.userId,
             'username': self.get_user(),
+            'userPic': self.get_userPic(),
+            'userVerified': self.get_userVerified(),
             'body': self.body,
             "image": self.image,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
-            'Replies' : [reply.to_dict2() for reply in self.replies]
+            'Replies' : [reply.to_dict2() for reply in self.replies],
+            'Likes' : 
+            {
+                "total": self.get_likes(), 
+                "youLiked":self.you_liked()
+            }
         }

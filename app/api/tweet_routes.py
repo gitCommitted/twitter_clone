@@ -19,7 +19,7 @@ def tweets():
 def create_tweet(id):
     tweet = Tweet(
         userId = current_user.id,
-        body = form.data['body'],
+        body = request.json['body']
     )
     db.session.add(tweet)
     db.session.commit()
