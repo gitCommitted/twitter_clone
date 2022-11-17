@@ -1,6 +1,7 @@
 from .db import db
 from .like import Like
 from .user import User
+from .follower import Follower
 from datetime import datetime
 from flask_login import current_user
 
@@ -41,6 +42,14 @@ class Tweet(db.Model):
             liked = False
         return liked
     
+    def you_follow(self):
+        follow = True
+        getFollow = Follower.query.filter(Follower.followerId == current_user.id).filter(Follower.userId == self.userId).first()
+        if getFollow is None:
+            follow = False
+        return follow
+
+    
     def to_dict(self):
         return {
             'id': self.id,
@@ -61,6 +70,7 @@ class Tweet(db.Model):
             'username': self.get_user(),
             'userPic': self.get_userPic(),
             'userVerified': self.get_userVerified(),
+            'youFollow': self.you_follow(),
             'body': self.body,
             "image": self.image,
             'created_on': self.created_on,

@@ -11,7 +11,7 @@ tweet_routes = Blueprint('tweet', __name__)
 # Get all tweets
 @tweet_routes.route('')
 def tweets():
-    tweets = Tweet.query.all()
+    tweets = Tweet.query.order_by(Tweet.id.desc()).all()
     return {"tweets": [tweet.to_dict() for tweet in tweets]}
 
 
