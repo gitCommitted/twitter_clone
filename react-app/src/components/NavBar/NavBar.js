@@ -1,12 +1,20 @@
-
-import React from 'react';
+import './NavBar.css';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import logo from '../images/logo.png';
+
+
 
 const NavBar = () => {
   return (
     <nav>
       <ul>
+      <NavLink to="/home" className='logo'>
+          <img className='logo' src={logo}/>
+      </NavLink>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
