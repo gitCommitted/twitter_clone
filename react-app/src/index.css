@@ -6,4 +6,13 @@ html {
 }
 li {
     list-style-type: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+}
+
+a {
+    text-decoration: none;
+    color: black;
+
 }
