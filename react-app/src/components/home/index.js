@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { fetchAllTweets } from '../../store/tweets';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import TweetListItem from '../tweet/tweetListItem';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -19,14 +20,14 @@ const Home = () => {
             if (data && data.errors) setErrors(data.errors);
         });
     }, [dispatch]);
-
+    console.log()
     return (
         <div>
         <h3>Home</h3>
         <ul>
             {tweets.map((tweet) => (
                 <li>
-                    {tweet.body}
+                    <TweetListItem tweet={tweet} />
                 </li>
             ))}
         </ul>

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { fetchUserTweets } from '../../store/tweets';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import TweetListItem from '../tweet/tweetListItem';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -26,8 +27,8 @@ const Profile = () => {
         <ul>
             {tweets.map((tweet) => (
                 <li>
-                    {tweet.body}
-                </li>
+                <TweetListItem tweet={tweet} />
+            </li>
             ))}
         </ul>
 

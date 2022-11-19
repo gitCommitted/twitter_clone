@@ -12,7 +12,7 @@ tweet_routes = Blueprint('tweet', __name__)
 @tweet_routes.route('')
 def tweets():
     tweets = Tweet.query.order_by(Tweet.id.desc()).all()
-    return {"tweets": [tweet.to_dict() for tweet in tweets]}
+    return {"tweets": [tweet.to_dict2() for tweet in tweets]}
 
 
 # Create a new tweet
