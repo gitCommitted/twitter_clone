@@ -9,7 +9,7 @@ const DemoLogin = () => {
   const dispatch = useDispatch();
 
   if (user) {
-    return <Redirect to='/home' />;
+    return <Redirect to='/' />;
   }
 
   const onLogin = async (e) => {
