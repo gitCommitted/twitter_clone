@@ -65,3 +65,9 @@ def unfollow(id):
     db.session.delete(follow)
     db.session.commit()
     return {'followers': [follower.to_dict() for follower in user.followers]}
+
+@user_routes.route('/myTweets')
+@login_required
+def myTweets():
+    user = User.query.get(current_user.id)
+    return {'tweets': [tweet.to_dict2() for tweet in user.tweets]}
