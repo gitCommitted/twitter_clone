@@ -5,6 +5,7 @@ import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import logo from '../images/logo.png';
+import DemoLogin from '../auth/DemoLogin';
 
 
 
@@ -40,6 +41,10 @@ const NavBar = () => {
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
+        </li>}
+        {!isLoggedIn && 
+        <li>
+          <DemoLogin />
         </li>}
         {isLoggedIn &&
         <li>
