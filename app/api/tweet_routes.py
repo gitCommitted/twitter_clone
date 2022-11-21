@@ -92,7 +92,7 @@ def like_tweet(id):
 
 
 # Unlike a tweet
-@tweet_routes.route('/<int:id>/unlike', methods=['POST'])
+@tweet_routes.route('/<int:id>/like', methods=['DELETE'])
 def unlike_tweet(id):
     tweet = Tweet.query.get(id)
     if tweet is None:

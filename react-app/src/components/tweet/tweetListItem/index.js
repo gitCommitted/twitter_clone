@@ -19,7 +19,7 @@ function TweetListItem({tweet, refreshTweet}) {
         
         </NavLink>
           
-          <div className='t-likes'>Likes: {tweet?.Likes?.total}</div>
+          <div className='t-likes'>Likes: {tweet?.Likes?.total} YouLiked?: {tweet?.Likes?.youLiked ? `Yes` : `No`}</div>
         </div>
         </div>
     );

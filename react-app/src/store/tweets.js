@@ -5,6 +5,8 @@ const GET_TWEET = 'tweet/get';
 const CREATE_TWEETS = 'tweets/create';
 const EDIT_TWEETS = 'tweets/edit';
 const DELETE_TWEETS = 'tweets/delete';
+const CREATE_LIKE = 'like/create';
+const DELETE_LIKE = 'like/delete';
 
 // ******** Tweets Actions ********
 
@@ -53,6 +55,19 @@ export const deleteTweets = (id) => {
         payload: id
     };
 };
+
+// CREATE Like
+export const createLike = (tweetId) => ({
+    type: CREATE_LIKE,
+    payload: tweetId
+})
+
+// DELETE Like
+export const deleteLike = (tweetId) => ({
+    type: DELETE_LIKE,
+    payload: tweetId
+})
+
 
 // ******** Tweet THUNKS ********
 
@@ -143,6 +158,31 @@ export const fetchDeleteTweets = (tweetId) => async (dispatch) => {
     };
     return res;
 };
+//Create a new like
+export const fetchCreateLike =  (tweetId) => async (dispatch) => {
+    let response;
+    response = await fetch(`/api/tweets/${tweetId}/like`,{method: 'POST'});
+
+    if(response.ok){
+        const answer = await response.json();
+        dispatch(createLike(tweetId));
+    };
+
+    return response;
+}
+
+//Delete a like
+export const fetchDeleteLike =  (tweetId) => async (dispatch) => {
+    let response;
+    response = await fetch(`/api/tweets/${tweetId}/like`,{method: 'DELETE'});
+
+    if(response.ok){
+        const answer = await response.json();
+        dispatch(deleteLike(tweetId));
+    };
+
+    return response;
+}
 
 // ******** REDUCER ********
 const initialState = {}
