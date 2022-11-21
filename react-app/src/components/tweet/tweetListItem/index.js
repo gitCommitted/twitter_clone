@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import { useHistory,NavLink } from 'react-router-dom';
+import { useHistory,NavLink, Link } from 'react-router-dom';
 import { useDispatch , useSelector} from 'react-redux';
 import { Modal } from '../../context/modal';
 import './tweetListItem.css';
-import { fetchTweet } from '../../../store/tweets';
+import { fetchTweet,fetchCreateLike,fetchDeleteLike } from '../../../store/tweets';
 
 function TweetListItem({tweet, refreshTweet}) {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user); 
     const isOwner = sessionUser.id === tweet?.userId;
-    // console.log('1tweet= ', tweet?.username);
-    // console.log('1tweet= ', tweet?.body);
+    const youLiked = tweet?.Likes?.youLiked;
+
+
+    const handleLike = async (e) => {
+        e.preventDefault();
+        return youLiked ? await dispatch(fetchDeleteLike(tweet.id)).then(refreshTweet())
+        .then(refreshTweet()) : await dispatch(fetchCreateLike(tweet.id)).then(refreshTweet())
+        .then(refreshTweet());
+    }
+
     return (
       <div className='t-container'>
         <div className='tlist-detail'>
@@ -18,8 +27,9 @@ function TweetListItem({tweet, refreshTweet}) {
         <div className='t-body'>{tweet?.body}</div>
         
         </NavLink>
-          
-          <div className='t-likes'>Likes: {tweet?.Likes?.total} YouLiked?: {tweet?.Likes?.youLiked ? `Yes` : `No`}</div>
+        <Link className="qli-link" onClick={handleLike}>
+            <div className='t-likes'>Likes: {tweet?.Likes?.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</div>
+            </Link>
         </div>
         </div>
     );

@@ -12,13 +12,16 @@ const Profile = () => {
     const tweets = Object.values(useSelector((state) => state.tweets?.user_tweets ? state.tweets.user_tweets : state.tweets));
     const [tweet, setTweet] = useState('');
     const [errors, setErrors] = useState([]);
-
+    const refreshTweet = () => {
+        dispatch(fetchUserTweets());
+        }
     useEffect(() => {
-        dispatch(fetchUserTweets()).catch(async (res) => {
-            console.log('res= ', res)
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        });
+        refreshTweet();
+        // dispatch(fetchUserTweets()).catch(async (res) => {
+        //     console.log('res= ', res)
+        //     const data = await res.json();
+        //     if (data && data.errors) setErrors(data.errors);
+        // });
     }, [dispatch]);
 
     return (
@@ -27,7 +30,7 @@ const Profile = () => {
         <ul>
             {tweets.map((tweet) => (
                 <li>
-                <TweetListItem tweet={tweet} />
+                <TweetListItem tweet={tweet} refreshTweet={refreshTweet}  />
             </li>
             ))}
         </ul>

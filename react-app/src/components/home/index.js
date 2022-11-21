@@ -12,13 +12,16 @@ const Home = () => {
     const tweets = Object.values(useSelector((state) => state.tweets?.all_tweets ? state.tweets.all_tweets : state.tweets));
     const [tweet, setTweet] = useState('');
     const [errors, setErrors] = useState([]);
-
+    const refreshTweet = () => {
+        dispatch(fetchAllTweets());
+        }
     useEffect(() => {
-        dispatch(fetchAllTweets()).catch(async (res) => {
-            console.log('res= ', res)
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        });
+        refreshTweet();
+        // dispatch(fetchAllTweets()).catch(async (res) => {
+        //     console.log('res= ', res)
+        //     const data = await res.json();
+        //     if (data && data.errors) setErrors(data.errors);
+        // });
     }, [dispatch]);
     console.log()
     return (
@@ -27,7 +30,7 @@ const Home = () => {
         <ul>
             {tweets.map((tweet) => (
                 <li>
-                    <TweetListItem tweet={tweet} />
+                    <TweetListItem tweet={tweet} refreshTweet={refreshTweet} />
                 </li>
             ))}
         </ul>
