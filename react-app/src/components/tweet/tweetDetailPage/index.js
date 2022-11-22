@@ -5,6 +5,7 @@ import Tweet from '../tweet';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { fetchTweet } from '../../../store/tweets';
+import Reply from '../../reply';
 
 const TweetDetails = () => {
     const { tweetId } = useParams();
@@ -12,7 +13,7 @@ const TweetDetails = () => {
     const dispatch = useDispatch();
 
     const tweet = useSelector(state => state.tweets);
-    const replies  = tweet.one_tweet?.Replies;
+    const replies  = tweet?.one_tweet?.Replies;
     const [errors, setErrors] = useState([]);
 
     console.log('tweet= ', tweet);
@@ -29,6 +30,14 @@ const TweetDetails = () => {
     <div className='tdp-container'>
       <h3>Tweet Details:</h3>
       <Tweet tweet={tweet.one_tweet} refreshTweet={refreshTweet}/>
+      <h3>Replies</h3>
+        <ul>
+            {replies?.map((reply) => (
+                <li>
+                    <Reply reply={reply} />
+                </li>
+            ))}
+        </ul>
     </div>
   );
 }

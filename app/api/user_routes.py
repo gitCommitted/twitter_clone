@@ -71,3 +71,9 @@ def unfollow(id):
 def myTweets():
     user = User.query.get(current_user.id)
     return {'tweets': [tweet.to_dict2() for tweet in user.tweets]}
+
+@user_routes.route('/myReplies')
+@login_required
+def myReplies():
+    user = User.query.get(current_user.id)
+    return {'replies': [reply.to_dict2() for reply in user.replies]}

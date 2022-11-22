@@ -3,10 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import tweetsReducer from './tweets';
 import tweets from './tweets'
+import replies from './reply'
+import repliesReducer from './reply';
 
 const rootReducer = combineReducers({
   session,
-  tweets: tweetsReducer
+  tweets: tweetsReducer,
+  replies: repliesReducer,
 });
 
 
