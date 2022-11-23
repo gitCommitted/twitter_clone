@@ -13,7 +13,7 @@ function Tweet({tweet, refreshTweet}) {
     const youLiked = tweet?.Likes?.youLiked;
     // console.log('1tweet= ', tweet?.username);
     // console.log('1tweet= ', tweet?.body);
-
+    const [showEditModal, setShowEditModal] = useState(false);
     const handleLike = async (e) => {
         e.preventDefault();
         return youLiked ? await dispatch(fetchDeleteLike(tweet.id)).then(refreshTweet())

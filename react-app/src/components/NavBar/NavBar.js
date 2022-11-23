@@ -65,16 +65,17 @@ const NavBar = () => {
         <li>
           <LogoutButton />
         </li>}
+        </ul>
         {isLoggedIn && 
-        <li>
+        <div className='tweetButton'>
         <button onClick={() => setShowModal(true)}>Tweet</button>
             {showModal && (
               <Modal onClose={() => setShowModal(false)}>
                 <TweetCreateForm setShowModal={setShowModal} />
               </Modal>
             )}
-        </li>}
-      </ul>
+            </div>}
+      
     </nav>
   );
 }
