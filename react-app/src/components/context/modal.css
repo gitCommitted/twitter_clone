@@ -45,13 +45,13 @@
   }
   
   .modal-form-title {
-      font-family: sans-serif;
+      font-family: Helvetica;
       color: white;
       font-size: 30px;
   }
   
   .modal-input-title-label {
-    font-family: sans-serif;
+    font-family: Helvetica;
     color: white;
     display: flex;
     margin-left: 15px;
@@ -92,5 +92,5 @@
   }
   
   .modal-cancel-btn {
-    background-color: rgb(255, 115, 0);
+    background-color: #AAB8C2;
   }

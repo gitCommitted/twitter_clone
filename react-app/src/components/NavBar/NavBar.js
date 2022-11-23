@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import logo from '../images/logo.png';
 import DemoLogin from '../auth/DemoLogin';
+import TweetCreateForm from '../forms/createTweet';
+import { Modal } from '../context/modal';
 
 
 
@@ -13,6 +15,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   const [isLoggedIn,setIsLoggedIn] = useState(false);
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     user ? setIsLoggedIn(true) : setIsLoggedIn(false)
@@ -61,6 +64,15 @@ const NavBar = () => {
         {isLoggedIn && 
         <li>
           <LogoutButton />
+        </li>}
+        {isLoggedIn && 
+        <li>
+        <button onClick={() => setShowModal(true)}>Tweet</button>
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <TweetCreateForm setShowModal={setShowModal} />
+              </Modal>
+            )}
         </li>}
       </ul>
     </nav>
