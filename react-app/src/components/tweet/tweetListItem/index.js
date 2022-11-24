@@ -4,12 +4,14 @@ import { useDispatch , useSelector} from 'react-redux';
 import { Modal } from '../../context/modal';
 import './tweetListItem.css';
 import { fetchTweet,fetchCreateLike,fetchDeleteLike } from '../../../store/tweets';
+import TweetEditForm from '../../forms/editTweet';
 
 function TweetListItem({tweet, refreshTweet}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user); 
     const isOwner = sessionUser.id === tweet?.userId;
     const youLiked = tweet?.Likes?.youLiked;
+    const [showEditModal, setShowEditModal] = useState(false);
 
 
     const handleLike = async (e) => {
@@ -22,11 +24,18 @@ function TweetListItem({tweet, refreshTweet}) {
     return (
       <div className='t-container'>
         <div className='tlist-detail'>
-        <NavLink className="qli-link" to={`/tweets/${tweet.id}`}>
+        <NavLink className="qli-link" to={`/tweets/${tweet?.id}`}>
         <div className='t-title'>Posted By: {tweet?.username}</div>
         <div className='t-body'>{tweet?.body}</div>
-        
         </NavLink>
+        <div className='q-actions-container'>
+          {isOwner && <button className="link link-button" onClick={() => setShowEditModal(true)}>Edit </button>}
+          {showEditModal && (
+            <Modal onClose={() => setShowEditModal(false)}>
+              <TweetEditForm setShowEditModal={setShowEditModal} tweet={tweet} refreshTweet={refreshTweet}/>
+            </Modal>
+          )}
+          </div>
         <Link className="qli-link" onClick={handleLike}>
             <div className='t-likes'>Likes: {tweet?.Likes?.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</div>
             </Link>

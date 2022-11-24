@@ -5,6 +5,7 @@ import { Modal } from '../../context/modal';
 import './tweet.css';
 import { fetchTweet } from '../../../store/tweets';
 import {fetchCreateLike, fetchDeleteLike} from '../../../store/tweets';
+import TweetEditForm from '../../forms/editTweet';
 
 function Tweet({tweet, refreshTweet}) {
     const dispatch = useDispatch();
@@ -28,6 +29,14 @@ function Tweet({tweet, refreshTweet}) {
         <div className='t-detail'>
           <div className='t-title'>Posted By: {tweet?.username}</div>
           <div className='t-body'>{tweet?.body}</div>
+          <div className='q-actions-container'>
+          {isOwner && <button className="link link-button" onClick={() => setShowEditModal(true)}>Edit </button>}
+          {showEditModal && (
+            <Modal onClose={() => setShowEditModal(false)}>
+              <TweetEditForm setShowEditModal={setShowEditModal} tweet={tweet} refreshTweet={refreshTweet}/>
+            </Modal>
+          )}
+          </div>
           <Link className="qli-link" onClick={handleLike}>
             <div className='t-likes'>Likes: {tweet?.Likes.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</div>
             </Link>
