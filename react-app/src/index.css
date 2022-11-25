@@ -20,5 +20,12 @@ a {
     text-decoration: none;
     color: black;
     margin-right: 10px;
+    margin-bottom: 0;
+    padding: 0;
 
+}
+.edButton {
+  background-color: #AAB8C2;
+  font-size: 15px;
+  margin-right: 10px;
 }

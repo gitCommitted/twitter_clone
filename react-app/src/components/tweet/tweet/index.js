@@ -3,9 +3,10 @@ import { NavLink, useHistory, Link } from 'react-router-dom';
 import { useDispatch , useSelector} from 'react-redux';
 import { Modal } from '../../context/modal';
 import './tweet.css';
-import { fetchTweet } from '../../../store/tweets';
+
 import {fetchCreateLike, fetchDeleteLike} from '../../../store/tweets';
 import TweetEditForm from '../../forms/editTweet';
+import TweetDelete from '../../forms/deleteTweet';
 
 function Tweet({tweet, refreshTweet}) {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Tweet({tweet, refreshTweet}) {
     // console.log('1tweet= ', tweet?.username);
     // console.log('1tweet= ', tweet?.body);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const handleLike = async (e) => {
         e.preventDefault();
         return youLiked ? await dispatch(fetchDeleteLike(tweet.id)).then(refreshTweet())
@@ -30,10 +32,16 @@ function Tweet({tweet, refreshTweet}) {
           <div className='t-title'>Posted By: {tweet?.username}</div>
           <div className='t-body'>{tweet?.body}</div>
           <div className='q-actions-container'>
-          {isOwner && <button className="link link-button" onClick={() => setShowEditModal(true)}>Edit </button>}
+          {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}
           {showEditModal && (
             <Modal onClose={() => setShowEditModal(false)}>
               <TweetEditForm setShowEditModal={setShowEditModal} tweet={tweet} refreshTweet={refreshTweet}/>
+            </Modal>
+          )}
+          {isOwner && <button  className="edButton" onClick={() => setShowDeleteModal(true)}>Delete</button> }
+          {showDeleteModal && (
+            <Modal onClose={() => setShowDeleteModal(false)}>
+              <TweetDelete setShowDeleteModal={setShowDeleteModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
             </Modal>
           )}
           </div>

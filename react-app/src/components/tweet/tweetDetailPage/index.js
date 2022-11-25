@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { fetchTweet } from '../../../store/tweets';
 import Reply from '../../reply';
 
+
 const TweetDetails = () => {
     const { tweetId } = useParams();
     const parsedId = parseInt(tweetId, 10);

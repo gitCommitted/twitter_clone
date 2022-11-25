@@ -5,6 +5,7 @@ import { Modal } from '../../context/modal';
 import './tweetListItem.css';
 import { fetchTweet,fetchCreateLike,fetchDeleteLike } from '../../../store/tweets';
 import TweetEditForm from '../../forms/editTweet';
+import TweetDelete from '../../forms/deleteTweet';
 
 function TweetListItem({tweet, refreshTweet}) {
     const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function TweetListItem({tweet, refreshTweet}) {
     const isOwner = sessionUser.id === tweet?.userId;
     const youLiked = tweet?.Likes?.youLiked;
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
 
     const handleLike = async (e) => {
@@ -29,10 +31,16 @@ function TweetListItem({tweet, refreshTweet}) {
         <div className='t-body'>{tweet?.body}</div>
         </NavLink>
         <div className='q-actions-container'>
-          {isOwner && <button className="link link-button" onClick={() => setShowEditModal(true)}>Edit </button>}
+          {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}
           {showEditModal && (
             <Modal onClose={() => setShowEditModal(false)}>
               <TweetEditForm setShowEditModal={setShowEditModal} tweet={tweet} refreshTweet={refreshTweet}/>
+            </Modal>
+          )}
+          {isOwner && <button  className="edButton" onClick={() => setShowDeleteModal(true)}>Delete</button> }
+          {showDeleteModal && (
+            <Modal onClose={() => setShowDeleteModal(false)}>
+              <TweetDelete setShowDeleteModal={setShowDeleteModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
             </Modal>
           )}
           </div>
