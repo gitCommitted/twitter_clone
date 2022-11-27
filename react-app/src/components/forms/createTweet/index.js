@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { fetchCreateTweets, fetchAllTweets } from '../../../store/tweets';
 import {Modal} from '../../context/modal';
 
-function TweetCreateForm({ setShowModal }) {
+function TweetCreateForm({ setShowModal, refreshTweet }) {
   const dispatch = useDispatch();
   const history = useHistory()
 
@@ -28,6 +28,7 @@ function TweetCreateForm({ setShowModal }) {
       .then((res) => {
        history.push(`/tweets/${res.id}`);
       })
+      .then(refreshTweet())
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setValidationErrors(data.errors);

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {fetchDeleteReplies} from '../../../store/reply';
 
-function ReplyDelete({ setShowDeleteModal, replyId, refreshTweet }) {
+function ReplyDelete({ setShowDeleteModal, replyId, refreshTweet, refreshReply }) {
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -14,6 +14,8 @@ function ReplyDelete({ setShowDeleteModal, replyId, refreshTweet }) {
         .then(() => setShowDeleteModal(false))
         .then(() => refreshTweet())
         .then(() => refreshTweet())
+        .then(refreshReply ? refreshReply() : null)
+        .then(refreshReply ? refreshReply() : null)
             .catch(async (res) => {
                 const data = await res.json()
                 if(data && data.errors) setErrors(data.errors)
