@@ -94,7 +94,7 @@ export const fetchEditReplies =  (reply,replyId) => async (dispatch) => {
 
 export const fetchDeleteReplies =  (replyId) => async (dispatch) => {
     let response;
-    response = await fetch(`/api/reply/${replyId}`, {method: 'DELETE'});
+    response = await fetch(`/api/replies/${replyId}`, {method: 'DELETE'});
 
     if(response.ok){
         const responseMessage = await response.json();

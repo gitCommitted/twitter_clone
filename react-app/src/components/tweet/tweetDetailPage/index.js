@@ -20,8 +20,8 @@ const TweetDetails = () => {
     const replies  = tweet?.one_tweet?.Replies;
     const [errors, setErrors] = useState([]);
 
-    console.log('tweet= ', tweet);
-    console.log('replies= ', replies);
+    // console.log('tweet= ', tweet);
+    // console.log('replies= ', replies);
     const refreshTweet = () => {
     dispatch(fetchTweet(parsedId));
     }
@@ -46,7 +46,7 @@ const TweetDetails = () => {
         <ul>
             {replies?.map((reply) => (
                 <li>
-                    <Reply reply={reply} />
+                    <Reply reply={reply} refreshTweet={refreshTweet}/>
                 </li>
             ))}
         </ul>

@@ -45,7 +45,7 @@ console.log()
         <ul>
             {replies?.map((reply) => (
                 <li>
-                    <Reply reply={reply} />
+                    <Reply reply={reply} refreshTweet={refreshTweet} refreshReply={refreshReply}/>
                 </li>
             ))}
         </ul>

@@ -30,6 +30,9 @@ function TweetListItem({tweet, refreshTweet}) {
         <div className='t-title'>Posted By: {tweet?.username}</div>
         <div className='t-body'>{tweet?.body}</div>
         </NavLink>
+        <Link className="qli-link" onClick={handleLike}>
+            <div className='t-likes'>Likes: {tweet?.Likes?.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</div>
+            </Link>
         <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}
           {showEditModal && (
@@ -44,9 +47,7 @@ function TweetListItem({tweet, refreshTweet}) {
             </Modal>
           )}
           </div>
-        <Link className="qli-link" onClick={handleLike}>
-            <div className='t-likes'>Likes: {tweet?.Likes?.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</div>
-            </Link>
+        
         </div>
         </div>
     );
