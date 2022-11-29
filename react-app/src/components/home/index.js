@@ -25,15 +25,15 @@ const Home = () => {
     }, [dispatch]);
     console.log()
     return (
-        <div>
+        <div id='mid'>
         <h3>Home</h3>
-        <ul>
+        
             {tweets.map((tweet) => (
-                <li>
+                <div>
                     <TweetListItem tweet={tweet} refreshTweet={refreshTweet} />
-                </li>
+                </div>
             ))}
-        </ul>
+        
 
         </div>
     );

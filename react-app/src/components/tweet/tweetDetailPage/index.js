@@ -31,7 +31,7 @@ const TweetDetails = () => {
     }, [dispatch])
 
   return (
-    <div className='tdp-container'>
+    <div className='tdp-container' id='mid'>
       <h3>Tweet Details:</h3>
       <Tweet tweet={tweet.one_tweet} refreshTweet={refreshTweet}/>
       <div className='replyButton'>
@@ -43,13 +43,13 @@ const TweetDetails = () => {
             )}
             </div>
       <h3>Replies</h3>
-        <ul>
+       
             {replies?.map((reply) => (
-                <li>
+                <div>
                     <Reply reply={reply} refreshTweet={refreshTweet}/>
-                </li>
+                </div>
             ))}
-        </ul>
+        
     </div>
   );
 }

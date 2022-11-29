@@ -30,8 +30,12 @@ function Tweet({tweet, refreshTweet}) {
       <div className='t-container'>
         <div className='t-detail'>
           <div className='t-title'>Posted By: {tweet?.username}</div>
-          <div className='t-body'>{tweet?.body}</div>
-          <div className='q-actions-container'>
+          <div className='t-body-detail'>{tweet?.body}</div>
+          
+          <div className="qli-link" onClick={handleLike}>
+            <Link className='t-likes'>Likes: {tweet?.Likes.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</Link>
+            </div>
+            <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}
           {showEditModal && (
             <Modal onClose={() => setShowEditModal(false)}>
@@ -45,9 +49,6 @@ function Tweet({tweet, refreshTweet}) {
             </Modal>
           )}
           </div>
-          <Link className="qli-link" onClick={handleLike}>
-            <div className='t-likes'>Likes: {tweet?.Likes.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</div>
-            </Link>
         </div>
         </div>
     );

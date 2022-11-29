@@ -21,6 +21,7 @@ function User() {
   }
 
   return (
+    <div id='mid'>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -32,6 +33,7 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
     </ul>
+    </div>
   );
 }
 export default User;

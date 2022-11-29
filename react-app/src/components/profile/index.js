@@ -32,23 +32,23 @@ const Profile = () => {
     }, [dispatch]);
 console.log()
     return (
-        <div>
+        <div id='mid'>
         <h3>My Tweets</h3>
-        <ul>
+     
             {tweets.map((tweet) => (
-                <li>
+                <div>
                 <TweetListItem tweet={tweet} refreshTweet={refreshTweet}  />
-            </li>
+            </div>
             ))}
-        </ul>
+        
         <h3>My Replies</h3>
-        <ul>
+        
             {replies?.map((reply) => (
-                <li>
+                <div>
                     <Reply reply={reply} refreshTweet={refreshTweet} refreshReply={refreshReply}/>
-                </li>
+                </div>
             ))}
-        </ul>
+        
         </div>
     );
     }

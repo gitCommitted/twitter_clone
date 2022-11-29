@@ -28,4 +28,30 @@ a {
   background-color: #AAB8C2;
   font-size: 15px;
   margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+nav {
+  display: inline-block;
+  padding-left: 14%;
+  padding-right: 4%;
+  height: 100%;
+  align-items: start;
+  vertical-align: top;
+}
+#mid {
+  display: inline-block;
+  width: 595px;
+  border: 1px solid rgb(235, 235, 235);
+  border-top: none;
+  margin: 0 14px;
+}
+.t-container {
+  
+  border: 1px solid rgb(235, 235, 235);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.qli-link{
+  padding: 0;
 }

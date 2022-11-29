@@ -22,10 +22,10 @@ function UsersList() {
   });
 
   return (
-    <>
+    <div id='mid'>
       <h1>User List: </h1>
       <ul>{userComponents}</ul>
-    </>
+    </div>
   );
 }
 
