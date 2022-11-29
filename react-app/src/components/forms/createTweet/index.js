@@ -2,7 +2,7 @@ import './createTweet.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { fetchCreateTweets, fetchAllTweets } from '../../../store/tweets';
+import { fetchCreateTweets, fetchAllTweets, fetchTweet } from '../../../store/tweets';
 import {Modal} from '../../context/modal';
 
 function TweetCreateForm({ setShowModal, refreshTweet }) {
@@ -26,9 +26,12 @@ function TweetCreateForm({ setShowModal, refreshTweet }) {
         return res;
       })
       .then((res) => {
+        dispatch(fetchTweet(res.id));
+        return res;
+       })
+      .then((res) => {
        history.push(`/tweets/${res.id}`);
       })
-      .then(refreshTweet())
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setValidationErrors(data.errors);
