@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {fetchDeleteTweets} from '../../../store/tweets';
+import { fetchGetUserReplies } from '../../../store/reply';
 
-function TweetDelete({ setShowDeleteModal, tweetId, refreshTweet }) {
+function TweetDelete({ setShowDeleteModal, tweetId, refreshTweet, refreshReply }) {
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -13,6 +14,8 @@ function TweetDelete({ setShowDeleteModal, tweetId, refreshTweet }) {
         dispatch(fetchDeleteTweets(tweetId))
         .then(() => setShowDeleteModal(false))
         .then(() => refreshTweet())
+        .then(dispatch(fetchGetUserReplies()))
+        .then(dispatch(fetchGetUserReplies()))
         .then(() => history.push('/profile'))
             .catch(async (res) => {
                 const data = await res.json()

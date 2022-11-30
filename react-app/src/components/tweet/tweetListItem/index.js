@@ -9,7 +9,7 @@ import TweetDelete from '../../forms/deleteTweet';
 import LoginFormModal from '../../forms/login';
 import LoginForm from '../../auth/LoginForm';
 
-function TweetListItem({tweet, refreshTweet}) {
+function TweetListItem({tweet, refreshTweet, refreshReply}) {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session?.user); 
@@ -68,9 +68,15 @@ function TweetListItem({tweet, refreshTweet}) {
           {isOwner && <button  className="edButton" onClick={() => setShowDeleteModal(true)}>Delete</button> }
           {showDeleteModal && (
             <Modal onClose={() => setShowDeleteModal(false)}>
-              <TweetDelete setShowDeleteModal={setShowDeleteModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
+              <TweetDelete setShowDeleteModal={setShowDeleteModal} tweetId={tweet?.id} refreshTweet={refreshTweet} />
             </Modal>
           )}
+          { refreshReply && (
+            showDeleteModal && (
+            <Modal onClose={() => setShowDeleteModal(false)}>
+              <TweetDelete setShowDeleteModal={setShowDeleteModal} tweetId={tweet?.id} refreshTweet={refreshTweet} refreshReply={refreshReply} />
+            </Modal>
+          ))}
           </div>
         
         </div>
