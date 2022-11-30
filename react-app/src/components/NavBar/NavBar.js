@@ -8,6 +8,8 @@ import logo from '../images/logo.png';
 import DemoLogin from '../auth/DemoLogin';
 import TweetCreateForm from '../forms/createTweet';
 import { Modal } from '../context/modal';
+import LoginFormModal from '../forms/login';
+import SignupFormModal from '../forms/signup';
 
 
 
@@ -29,21 +31,17 @@ const NavBar = () => {
       </NavLink>
         {isLoggedIn && 
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <NavLink to='/home' exact={true} activeClassName='active'>
             Home
           </NavLink>
         </li>}
         {!isLoggedIn && 
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
+          <LoginFormModal />
         </li>}
         {!isLoggedIn &&
         <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
+          <SignupFormModal />
         </li>}
         {!isLoggedIn && 
         <li>

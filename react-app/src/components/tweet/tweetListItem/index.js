@@ -9,11 +9,13 @@ import TweetDelete from '../../forms/deleteTweet';
 
 function TweetListItem({tweet, refreshTweet}) {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user); 
-    const isOwner = sessionUser.id === tweet?.userId;
+    
+    const sessionUser = useSelector(state => state.session?.user); 
+    const isOwner = sessionUser?.id === tweet?.userId;
     const youLiked = tweet?.Likes?.youLiked;
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+  
 
 
     const handleLike = async (e) => {
@@ -31,9 +33,10 @@ function TweetListItem({tweet, refreshTweet}) {
         <div>
         <NavLink className="t-body" to={`/tweets/${tweet?.id}`}>{tweet?.body}</NavLink>
         </div>
+        {sessionUser && (
         <div className="qli-link" onClick={handleLike}>
             <Link className='t-likes'>Likes: {tweet?.Likes?.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</Link>
-            </div>
+            </div>)}
         <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}
           {showEditModal && (

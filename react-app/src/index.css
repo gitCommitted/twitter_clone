@@ -48,9 +48,9 @@ nav {
 }
 .t-container {
   
-  border: 1px solid rgb(235, 235, 235);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  border-top: 1px solid rgb(235, 235, 235);
+  padding: 20px;
+
 }
 .qli-link{
   padding: 0;

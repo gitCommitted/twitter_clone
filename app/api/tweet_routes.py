@@ -14,6 +14,11 @@ def tweets():
     tweets = Tweet.query.order_by(Tweet.id.desc()).all()
     return {"tweets": [tweet.to_dict2() for tweet in tweets]}
 
+# Get all tweets landing page
+@tweet_routes.route('/all')
+def tweets2():
+    tweets = Tweet.query.order_by(Tweet.id.desc()).all()
+    return {"tweets": [tweet.to_dict() for tweet in tweets]}
 
 # Create a new tweet
 @tweet_routes.route('', methods=['POST'])

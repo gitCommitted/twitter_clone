@@ -1,5 +1,6 @@
 // ******** Tweet Constants ********
 const GET_ALL_TWEETS = 'tweets/get';
+const GET_ALL_TWEETS2 = 'tweets2/get';
 const GET_USER_TWEETS = 'user_tweets/get';
 const GET_TWEET = 'tweet/get';
 const CREATE_TWEETS = 'tweets/create';
@@ -14,6 +15,13 @@ const DELETE_LIKE = 'like/delete';
 export const getAllTweets = (tweets) => {
     return {
         type: GET_ALL_TWEETS,
+        payload: tweets    
+    };
+};
+
+export const getAllTweets2 = (tweets) => {
+    return {
+        type: GET_ALL_TWEETS2,
         payload: tweets    
     };
 };
@@ -78,6 +86,17 @@ export const fetchAllTweets = () => async (dispatch) => {
     if (res.ok){
         const tweets = await res.json();
         dispatch(getAllTweets(tweets));
+        return tweets
+    };
+    return res;
+};
+
+export const fetchAllTweets2 = () => async (dispatch) => {
+    const res = await fetch(`/api/tweets/all`);
+
+    if (res.ok){
+        const tweets = await res.json();
+        dispatch(getAllTweets2(tweets));
         return tweets
     };
     return res;
@@ -191,6 +210,10 @@ const tweetsReducer = (state = initialState, action) => {
     let newState = {...state};
     switch(action.type) {
         case GET_ALL_TWEETS:
+            newState.all_tweets = {}
+            action.payload['tweets'].forEach(tweet => newState.all_tweets[tweet.id] = tweet)
+            return newState;
+        case GET_ALL_TWEETS2:
             newState.all_tweets = {}
             action.payload['tweets'].forEach(tweet => newState.all_tweets[tweet.id] = tweet)
             return newState;

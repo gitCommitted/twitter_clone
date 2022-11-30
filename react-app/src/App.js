@@ -11,6 +11,7 @@ import Profile from './components/profile';
 import { authenticate } from './store/session';
 import Home from './components/home';
 import TweetDetails from './components/tweet/tweetDetailPage';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,9 +50,12 @@ function App() {
         <ProtectedRoute path='/tweets/:tweetId' exact={true} >
           <TweetDetails />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/home' exact={true} >
           <Home />
         </ProtectedRoute>
+        <Route path="/" exact={true}>
+          <LandingPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
