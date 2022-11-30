@@ -18,7 +18,7 @@ return (
     <div>
        
           <Link onClick={onLogout}>
-          Logout
+          <i className="fa-solid fa-arrow-right-from-bracket"></i>   Logout
           </Link> 
           
     </div>

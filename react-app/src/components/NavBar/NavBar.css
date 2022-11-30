@@ -2,7 +2,9 @@
 
     width: 40px;
     height:auto;
-    padding-top: 5px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
 }
 button {
     top:50%;

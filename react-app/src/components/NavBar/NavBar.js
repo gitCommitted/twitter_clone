@@ -43,12 +43,12 @@ const NavBar = () => {
         {isLoggedIn && 
         <li>
           <NavLink to='/home' exact={true} activeClassName='active'>
-            Home
+          <i className="fa-solid fa-house"></i>   Home
           </NavLink>
         </li>}
         <li>
           <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')}>
-            About
+          <i className="fa-brands fa-github"></i>  About
           </Link>
         </li>
         {!isLoggedIn && 
@@ -66,13 +66,13 @@ const NavBar = () => {
         {isLoggedIn &&
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
+          <i className="fa-solid fa-users"></i>   Users
           </NavLink>
         </li>}
         {isLoggedIn &&
         <li>
           <NavLink to='/profile' exact={true} activeClassName='active'>
-            Profile
+          <i className="fa-solid fa-circle-user"></i>   Profile
           </NavLink>
         </li>}
         {isLoggedIn && 

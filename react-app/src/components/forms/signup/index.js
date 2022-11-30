@@ -11,7 +11,7 @@ function SignupFormModal() {
       <Link
         onClick={() => setShowModal(true)}
       >
-        Sign Up
+      <i className="fa-solid fa-user-plus"></i>  Sign Up
       </Link>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

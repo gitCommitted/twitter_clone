@@ -11,7 +11,7 @@ function LoginFormModal() {
       <Link
         onClick={() => setShowModal(true)}
       >
-        Log In
+      <i className="fa-solid fa-arrow-right-to-bracket"></i>  Log In
       </Link>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
