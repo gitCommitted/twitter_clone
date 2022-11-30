@@ -17,7 +17,7 @@ function TweetListItem({tweet, refreshTweet}) {
     const youLiked = tweet?.Likes?.youLiked;
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
   
 
 
@@ -37,21 +37,17 @@ function TweetListItem({tweet, refreshTweet}) {
         </div>)}
         {!sessionUser && (
         <div className='t-user-box'>
-        <Link className="t-user" onClick={() => setShowLoginModal(true)}>Posted By: {tweet?.username}</Link>
+        <Link className="t-user" onClick={() => setShowModal(true)}>Posted By: {tweet?.username}</Link>
         </div>)}
-        {showLoginModal && (
-        <Modal onClose={() => setShowLoginModal(false)}>
-              <LoginForm setShowLoginModal={setShowLoginModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
+        {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+              <LoginForm setShowModal={setShowModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
         </Modal>)}
         {!sessionUser && (
         <div>
-        <Link className="t-body" onClick={() => setShowLoginModal(true)}>{tweet?.body}</Link>
+        <Link className="t-body" onClick={() => setShowModal(true)}>{tweet?.body}</Link>
         </div>)}
-        {showLoginModal && (
-        <Modal onClose={() => setShowLoginModal(false)}>
-              <LoginForm setShowLoginModal={setShowLoginModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
-        </Modal>)}
-
+       
 
         {sessionUser && (
         <div>
