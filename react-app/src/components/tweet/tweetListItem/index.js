@@ -33,11 +33,13 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
         <div className='tlist-detail'>
           {sessionUser && (
         <div className='t-user-box'>
-        <NavLink className="t-user" to={`/tweets/${tweet?.id}`}>Posted By: {tweet?.username}</NavLink>
+        <NavLink className="t-user" to={`/tweets/${tweet?.id}`}>
+        <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</NavLink>
         </div>)}
         {!sessionUser && (
         <div className='t-user-box'>
-        <Link className="t-user" onClick={() => setShowModal(true)}>Posted By: {tweet?.username}</Link>
+        <Link className="t-user" onClick={() => setShowModal(true)}>
+        <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</Link>
         </div>)}
         {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -56,7 +58,9 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
         
         {sessionUser && (
         <div className="qli-link" onClick={handleLike}>
-            <Link className='t-likes'>Likes: {tweet?.Likes?.total} You liked this?: {tweet?.Likes?.youLiked ? `Yes`: `No`}</Link>
+            <Link className='t-likes'>
+               {tweet?.Likes?.youLiked ? <i className="fa-regular fa-heart"></i> : <i className="fa-solid fa-heart"></i>} Total likes: {tweet?.Likes?.total}
+            </Link>
             </div>)}
         <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}

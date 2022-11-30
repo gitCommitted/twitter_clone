@@ -29,11 +29,14 @@ function Tweet({tweet, refreshTweet}) {
     return (
       <div className='t-container'>
         <div className='t-detail'>
-          <div className='t-user'>Posted By: {tweet?.username}</div>
+          <div className='t-user'>
+          <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</div>
           <div className='t-body-detail'>{tweet?.body}</div>
           
           <div className="qli-link" onClick={handleLike}>
-            <Link className='t-likes'>Likes: {tweet?.Likes.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</Link>
+          <Link className='t-likes'>
+               {tweet?.Likes?.youLiked ? <i className="fa-regular fa-heart"></i> : <i className="fa-solid fa-heart"></i>} Total likes: {tweet?.Likes?.total}
+            </Link>
             </div>
             <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}

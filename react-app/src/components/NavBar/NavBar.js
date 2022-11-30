@@ -72,7 +72,7 @@ const NavBar = () => {
         {isLoggedIn &&
         <li>
           <NavLink to='/profile' exact={true} activeClassName='active'>
-          <i className="fa-solid fa-circle-user"></i>   Profile
+          <i className="fa-solid fa-user"></i>   Profile
           </NavLink>
         </li>}
         {isLoggedIn && 
