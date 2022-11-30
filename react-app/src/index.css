@@ -50,6 +50,7 @@ nav {
   
   border-bottom: 1px solid #E1E8ED;
   padding: 20px;
+  word-break: break-all;
 
 }
 .t-likes{

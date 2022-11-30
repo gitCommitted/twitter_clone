@@ -22,6 +22,7 @@ function User() {
 
   return (
     <div id='mid'>
+      <h3>User Details</h3>
     <ul>
       <li>
         <strong>User Id</strong> {userId}

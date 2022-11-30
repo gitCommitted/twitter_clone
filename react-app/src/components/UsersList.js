@@ -23,7 +23,7 @@ function UsersList() {
 
   return (
     <div id='mid'>
-      <h1>User List: </h1>
+      <h3>User List </h3>
       <ul>{userComponents}</ul>
     </div>
   );

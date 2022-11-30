@@ -46,6 +46,11 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>}
+        <li>
+          <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')}>
+            About
+          </Link>
+        </li>
         {!isLoggedIn && 
         <li>
           <LoginFormModal />
