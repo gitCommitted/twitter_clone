@@ -35,7 +35,7 @@ function Tweet({tweet, refreshTweet}) {
           
           <div className="qli-link" onClick={handleLike}>
           <Link className='t-likes'>
-               {tweet?.Likes?.youLiked ? <i className="fa-regular fa-heart"></i> : <i className="fa-solid fa-heart"></i>} Total likes: {tweet?.Likes?.total}
+               {tweet?.Likes?.youLiked ? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>} Total likes: {tweet?.Likes?.total}
             </Link>
             </div>
             <div className='q-actions-container'>
