@@ -23,8 +23,8 @@ function Reply({reply, refreshReply, refreshTweet}) {
     return (
       <div className='t-container'>
         <div className='t-detail'>
-          <div className='t-title'>Posted By: {reply?.username}</div>
-          <div className='t-body'>{reply?.body}</div>
+          <div className='t-user'>Posted By: {reply?.username}</div>
+          <div className='r-body'>{reply?.body}</div>
           <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}
           {showEditModal && (

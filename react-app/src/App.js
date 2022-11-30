@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import Home from './components/home';
 import TweetDetails from './components/tweet/tweetDetailPage';
 import LandingPage from './components/LandingPage';
+import LoginFormModal from './components/forms/login';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,7 +34,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginFormModal />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />

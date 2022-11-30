@@ -33,7 +33,7 @@ a {
 }
 nav {
   display: inline-block;
-  padding-left: 14%;
+  padding-left: 20%;
   padding-right: 4%;
   height: 100%;
   align-items: start;
@@ -42,16 +42,47 @@ nav {
 #mid {
   display: inline-block;
   width: 595px;
-  border: 1px solid rgb(235, 235, 235);
+  border: 1px solid #E1E8ED;
   border-top: none;
   margin: 0 14px;
 }
 .t-container {
   
-  border-top: 1px solid rgb(235, 235, 235);
+  border-bottom: 1px solid #E1E8ED;
   padding: 20px;
 
 }
-.qli-link{
+.t-likes{
   padding: 0;
+  color: #657786;
+  font-style: italic;
+  font-size: 75%;
+}
+.qli-link{
+  padding-top: 10px;
+  padding-bottom: 12px;
+}
+.t-user {
+  color: #657786;
+  font-size: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.t-user-box{
+  padding-top: 10px;
+  padding-bottom: 12px;
+}
+h3 {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid  #E1E8ED;
+  margin: 0
+}
+.r-body {
+  padding-bottom: 10px;
+}
+.replyButton{
+  margin-top: 10px;
+  margin-left: 20px;
 }

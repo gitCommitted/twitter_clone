@@ -32,7 +32,7 @@ const TweetDetails = () => {
 
   return (
     <div className='tdp-container' id='mid'>
-      <h3>Tweet Details:</h3>
+      <h3>Tweet Details</h3>
       <Tweet tweet={tweet.one_tweet} refreshTweet={refreshTweet}/>
       <div className='replyButton'>
         <button onClick={() => setShowModal(true)}>Reply</button>

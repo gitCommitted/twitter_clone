@@ -26,7 +26,7 @@ const LandingPage = () => {
     console.log()
     return (
         <div id='mid'>
-        <h3>Welcome to i-tweet</h3>
+        <h3>Explore i-tweet</h3>
         
             {tweets.map((tweet) => (
                 <div>

@@ -29,7 +29,7 @@ function Tweet({tweet, refreshTweet}) {
     return (
       <div className='t-container'>
         <div className='t-detail'>
-          <div className='t-title'>Posted By: {tweet?.username}</div>
+          <div className='t-user'>Posted By: {tweet?.username}</div>
           <div className='t-body-detail'>{tweet?.body}</div>
           
           <div className="qli-link" onClick={handleLike}>

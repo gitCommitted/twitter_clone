@@ -6,6 +6,8 @@ import './tweetListItem.css';
 import { fetchTweet,fetchCreateLike,fetchDeleteLike } from '../../../store/tweets';
 import TweetEditForm from '../../forms/editTweet';
 import TweetDelete from '../../forms/deleteTweet';
+import LoginFormModal from '../../forms/login';
+import LoginForm from '../../auth/LoginForm';
 
 function TweetListItem({tweet, refreshTweet}) {
     const dispatch = useDispatch();
@@ -15,6 +17,7 @@ function TweetListItem({tweet, refreshTweet}) {
     const youLiked = tweet?.Likes?.youLiked;
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
   
 
 
@@ -28,14 +31,36 @@ function TweetListItem({tweet, refreshTweet}) {
     return (
       <div className='t-container'>
         <div className='tlist-detail'>
-        
+          {sessionUser && (
+        <div className='t-user-box'>
         <NavLink className="t-user" to={`/tweets/${tweet?.id}`}>Posted By: {tweet?.username}</NavLink>
+        </div>)}
+        {!sessionUser && (
+        <div className='t-user-box'>
+        <Link className="t-user" onClick={() => setShowLoginModal(true)}>Posted By: {tweet?.username}</Link>
+        </div>)}
+        {showLoginModal && (
+        <Modal onClose={() => setShowLoginModal(false)}>
+              <LoginForm setShowLoginModal={setShowLoginModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
+        </Modal>)}
+        {!sessionUser && (
+        <div>
+        <Link className="t-body" onClick={() => setShowLoginModal(true)}>{tweet?.body}</Link>
+        </div>)}
+        {showLoginModal && (
+        <Modal onClose={() => setShowLoginModal(false)}>
+              <LoginForm setShowLoginModal={setShowLoginModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>
+        </Modal>)}
+
+
+        {sessionUser && (
         <div>
         <NavLink className="t-body" to={`/tweets/${tweet?.id}`}>{tweet?.body}</NavLink>
-        </div>
+        </div>)}
+        
         {sessionUser && (
         <div className="qli-link" onClick={handleLike}>
-            <Link className='t-likes'>Likes: {tweet?.Likes?.total} youLiked: {tweet?.Likes?.youLiked ? `Yes`: `No`}</Link>
+            <Link className='t-likes'>Likes: {tweet?.Likes?.total} You liked this?: {tweet?.Likes?.youLiked ? `Yes`: `No`}</Link>
             </div>)}
         <div className='q-actions-container'>
           {isOwner && <button className="edButton" onClick={() => setShowEditModal(true)}>Edit </button>}

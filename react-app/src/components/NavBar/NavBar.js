@@ -26,7 +26,7 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
-      <NavLink to="/" className='logo'>
+      <NavLink to="/login" className='logo'>
           <img className='logo' src={logo}/>
       </NavLink>
         {isLoggedIn && 
