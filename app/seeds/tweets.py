@@ -25,12 +25,22 @@ def seed_tweets():
         userId=3,
         body="I'm another tweeter tester"
     )
+    tweet7 = Tweet(
+        userId=1,
+        body="I'm a longer tweet for testing purposes, not for testing porpoises"
+    )
+    tweet8 = Tweet(
+        userId=1,
+        body="Testing porpoises is unethical"
+    )
     db.session.add(tweet1)
     db.session.add(tweet2)
     db.session.add(tweet3)
     db.session.add(tweet4)
     db.session.add(tweet5)
     db.session.add(tweet6)
+    db.session.add(tweet7)
+    db.session.add(tweet8)
     db.session.commit()
 
 def undo_tweets():

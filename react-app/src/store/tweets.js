@@ -114,7 +114,7 @@ export const fetchUserTweets = () => async (dispatch) => {
      
         dispatch(getUserTweets(tweets));
 
-        console.log('inside response, ', tweets)
+        // console.log('inside response, ', tweets)
         return res;
     };
     // return res
@@ -144,7 +144,12 @@ export const fetchCreateTweets = (tweet) => async (dispatch) => {
         const tweet = await res.json();
         dispatch(createTweets(tweet));
         return tweet;
-    };
+    }
+    else {
+        const errors = await res.json();
+        // console.log(errors);
+        return errors;
+    }
     return res;
 };
 

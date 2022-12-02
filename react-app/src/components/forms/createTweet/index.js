@@ -22,20 +22,29 @@ function TweetCreateForm({ setShowModal, refreshTweet }) {
     
     const createdTweet = await dispatch(fetchCreateTweets(payload))
     .then((res) => {
+      // console.log('res', res.errors)
+      if (res && res.errors) {
+        setValidationErrors(res.errors)
+      } else {
         setShowModal(false)
-        return res;
+      }
+      return res
       })
       .then((res) => {
+        if (!res.errors) {
         dispatch(fetchTweet(res.id));
+        }
         return res;
        })
       .then((res) => {
-       history.push(`/tweets/${res.id}`);
+        if (!res.errors) {
+       history.push(`/tweets/${res?.id}`);
+        }
       })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setValidationErrors(data.errors);
-      })
+      // .catch(async (res) => {
+      //   const data = await res.json();
+      //   ;
+      // })
 
       return createdTweet;
   }
