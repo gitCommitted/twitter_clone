@@ -49,13 +49,32 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
         <div>
         <Link className="t-body" onClick={() => setShowModal(true)}>{tweet?.body}</Link>
         </div>)}
+        {!sessionUser && (
+        <div>
+        <Link className="t-image-box" onClick={() => setShowModal(true)}>
+        <img
+            className='image-pic'
+            src={tweet?.image}
+            alt={tweet?.image}
+            />
+        </Link>
+        </div>)}
        
 
         {sessionUser && (
         <div>
         <NavLink className="t-body" to={`/tweets/${tweet?.id}`}>{tweet?.body}</NavLink>
         </div>)}
-        
+        {sessionUser && (
+        <div>
+        <NavLink className="t-image-box" to={`/tweets/${tweet?.id}`}>
+        <img
+            className='image-pic'
+            src={tweet?.image}
+            alt={tweet?.image}
+            />
+        </NavLink>
+        </div>)}
         {sessionUser && (
         <div className="qli-link" onClick={handleLike}>
             <Link className='t-likes'>

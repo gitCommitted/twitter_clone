@@ -6,3 +6,4 @@ from app.models import User, db, Tweet, Like, Follower, Reply
 
 class TweetForm(FlaskForm):
     body = StringField('body', validators=[DataRequired(), Length(min=1, max=280)])
+    image = StringField('image')

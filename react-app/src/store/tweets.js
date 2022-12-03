@@ -136,8 +136,8 @@ export const fetchTweet = (tweetId) => async (dispatch) => {
 export const fetchCreateTweets = (tweet) => async (dispatch) => {
     const res = await fetch(`/api/tweets`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(tweet)
+    //   headers: { 'Content-Type': 'application/json' },
+      body: tweet
     });
     
     if (res.ok){
@@ -154,11 +154,11 @@ export const fetchCreateTweets = (tweet) => async (dispatch) => {
 };
 
 // EDIT (PUT) Tweets thunk
-export const fetchEditTweets = (tweet) => async (dispatch) => {
-    const res = await fetch(`/api/tweets/${tweet.id}`, {
+export const fetchEditTweets = (tweet,tweetId) => async (dispatch) => {
+    const res = await fetch(`/api/tweets/${tweetId}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(tweet)
+    //   headers: { 'Content-Type': 'application/json' },
+      body: tweet
     });
 
     if (res.ok){

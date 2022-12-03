@@ -10,16 +10,17 @@ function TweetEditForm({ setShowEditModal, tweet, refreshTweet }) {
 
     
     const [body, setBody] = useState(tweet?.body);
+    const [image, setImage] = useState(tweet?.image);
     const [errors, setErrors] = useState([]);
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      const payload = {
-        id: tweet?.id,
-        body
-      }
-  
-      const editedTweet = dispatch(fetchEditTweets(payload))
+
+      const formData = new FormData();
+      formData.append('id', tweet?.id)
+      formData.append('body', body)
+      formData.append('image', image)
+      const editedTweet = dispatch(fetchEditTweets(formData,tweet?.id))
         .then((res) => {
         // console.log('res', res.errors)
         if (res && res.errors) {
@@ -59,6 +60,12 @@ function TweetEditForm({ setShowEditModal, tweet, refreshTweet }) {
           onChange={(e) => setBody(e.target.value)}
           name='body'
           required
+        />
+        <input
+          className='modal-input-title file-btn'
+          type='file'
+          accept='image/*'
+          onChange={(e) => setImage(e.target.files[0])}
         />
         <ul>
           {errors.length > 0 &&

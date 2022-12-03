@@ -4,6 +4,8 @@ from app.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.forms import TweetForm, ReplyForm
 from app.api.auth_routes import validation_errors_to_error_messages
+from app.s3helpers import upload_file_to_s3, allowed_file, get_unique_filename
+
 
 tweet_routes = Blueprint('tweet', __name__)
 
@@ -26,6 +28,20 @@ def tweets2():
 def create_tweet():
     form = TweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    if len(request.files) > 0 and form.validate_on_submit():
+        print("FILES!!!!!!!!!!!!!:", len(request.files))
+        file = request.files["image"]
+        tweet = Tweet(
+        body=form.data['body'],
+        userId=current_user.id,
+        image=form.data['image']
+        )
+        file.filename = get_unique_filename(file.filename)
+        upload = upload_file_to_s3(file)
+        tweet.image = upload["url"]
+        db.session.add(tweet)
+        db.session.commit()
+        return tweet.to_dict2()
     if form.validate_on_submit():
         tweet = Tweet(
             body=form.data['body'],
@@ -70,6 +86,16 @@ def edit_tweet(id):
         return {'errors': ["aint your tweet"]}, 401
     form = TweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    if len(request.files) > 0 and form.validate_on_submit():
+        print("FILES!!!!!!!!!!!!!:", len(request.files))
+        file = request.files["image"]
+        tweet.body = form.data['body']
+        tweet.image=form.data['image']
+        file.filename = get_unique_filename(file.filename)
+        upload = upload_file_to_s3(file)
+        tweet.image = upload["url"]
+        db.session.commit()
+        return tweet.to_dict2()
     if form.validate_on_submit():
         tweet.body = form.data['body']
         db.session.commit()

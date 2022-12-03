@@ -11,16 +11,17 @@ function TweetCreateForm({ setShowModal, refreshTweet }) {
 
 
   const [body, setBody] = useState('');
+  const [image, setImage] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
 
-    const payload = {
-      body
-    }
+    formData.append('body', body)
+    formData.append('image', image)
     
-    const createdTweet = await dispatch(fetchCreateTweets(payload))
+    const createdTweet = await dispatch(fetchCreateTweets(formData))
     .then((res) => {
       // console.log('res', res.errors)
       if (res && res.errors) {
@@ -60,6 +61,12 @@ function TweetCreateForm({ setShowModal, refreshTweet }) {
         placeholder='Write Tweet Here'
         required
       />
+      <input
+          className='modal-input-title file-btn'
+          type='file'
+          accept='image/*'
+          onChange={(e) => setImage(e.target.files[0])}
+        />
       {validationErrors && (
         <ul>
           {validationErrors.map((error) => (

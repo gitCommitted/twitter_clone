@@ -32,6 +32,13 @@ function Tweet({tweet, refreshTweet}) {
           <div className='t-user'>
           <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</div>
           <div className='t-body-detail'>{tweet?.body}</div>
+          <div className='t-image-box'>
+            <img
+            className='image-pic'
+            src={tweet?.image}
+            alt={tweet?.image}
+            />
+          </div>
           
           <div className="qli-link" onClick={handleLike}>
           <Link className='t-likes'>
