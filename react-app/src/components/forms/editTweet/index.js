@@ -20,16 +20,31 @@ function TweetEditForm({ setShowEditModal, tweet, refreshTweet }) {
       }
   
       const editedTweet = dispatch(fetchEditTweets(payload))
-        .then(refreshTweet())
-        .then(refreshTweet())
-        .then(() => {
-          setShowEditModal(false);
+        .then((res) => {
+        // console.log('res', res.errors)
+        if (res && res.errors) {
+          setErrors(res.errors)
+        };
+        return res
         })
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-  
+        .then((res) => {
+          if (!res.errors) {
+          refreshTweet();
+          }
+          return res;
+        })
+        .then((res) => {
+          if (!res.errors) {
+          refreshTweet();
+          }
+          return res;
+        })
+        .then((res) => {
+          if (!res.errors) {
+          setShowEditModal(false);
+          }
+          return res;
+        })
         return editedTweet;
     }
   

@@ -165,7 +165,12 @@ export const fetchEditTweets = (tweet) => async (dispatch) => {
         const tweet = await res.json();
         dispatch(editTweets(tweet));
         return tweet;
-    };
+    }
+    else {
+        const errors = await res.json();
+        // console.log(errors);
+        return errors;
+    }
     return res;
 };
 
