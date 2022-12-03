@@ -10,6 +10,11 @@ ENV FLASK_APP=app
 ENV FLASK_ENV=production
 # SQLALCHEMY_ECHO -> Just set it to true
 ENV SQLALCHEMY_ECHO=true
+
+ENV S3_BUCKET=itweetbucket
+ENV S3_KEY=AKIA3FNB6IS2OPSMZKUD
+ENV S3_SECRET=MGAmO47wHq8Xk6PEiU8vHg5fiPgMK0f9LJCoh0mb
+
 # Set the directory for upcoming commands to /var/www
 WORKDIR /var/ww
 # Copy all the files from your repo to the working directory
