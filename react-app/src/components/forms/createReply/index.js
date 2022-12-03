@@ -21,15 +21,30 @@ function ReplyCreateForm({ setShowModal, tweetId, refreshTweet }) {
     }
     
     const createdReply = await dispatch(fetchCreateReplies(payload,tweetId))
-    .then(refreshTweet())
-    .then(refreshTweet())
     .then((res) => {
-        setShowModal(false)
+      // console.log('res', res.errors)
+      if (res && res.errors) {
+        setValidationErrors(res.errors)
+      };
+      return res
+      })
+      .then((res) => {
+        if (!res.errors) {
+        refreshTweet();
+        }
         return res;
       })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setValidationErrors(data.errors);
+      .then((res) => {
+        if (!res.errors) {
+        refreshTweet();
+        }
+        return res;
+      })
+      .then((res) => {
+        if (!res.errors) {
+        setShowModal(false);
+        }
+        return res;
       })
 
       return createdReply;

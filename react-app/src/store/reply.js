@@ -64,7 +64,12 @@ export const fetchCreateReplies = (reply,tweetId) => async (dispatch) => {
     if(response.ok){
         const reply = await response.json();
         dispatch(createReplies(reply,tweetId));
-    };
+    }
+    else {
+        const errors = await response.json();
+        // console.log(errors);
+        return errors;
+    }
 
     return response;
  
@@ -86,7 +91,12 @@ export const fetchEditReplies =  (reply,replyId) => async (dispatch) => {
     if(response.ok){
         const reply = await response.json();
         dispatch(editReplies(reply));
-    };
+    }
+    else {
+        const errors = await response.json();
+        // console.log(errors);
+        return errors;
+    }
 
     return response;
 }

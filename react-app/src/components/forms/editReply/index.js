@@ -20,18 +20,44 @@ function ReplyEditForm({ setShowEditModal, reply, refreshTweet, refreshReply }) 
       }
     //   console.log('payload', payload, 'reply', reply, reply.id)
       const editedReply = dispatch(fetchEditReplies(payload,reply.id))
-        .then(refreshTweet())
-        .then(refreshTweet())
-        .then(refreshReply ? refreshReply() : null)
-        .then(refreshReply ? refreshReply() : null)
-        .then(() => {
-          setShowEditModal(false);
+      .then((res) => {
+        // console.log('res', res.errors)
+        if (res && res.errors) {
+          setErrors(res.errors)
+        };
+        return res
         })
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-  
+        .then((res) => {
+          if (!res.errors) {
+          refreshTweet();
+          }
+          return res;
+        })
+        .then((res) => {
+          if (!res.errors) {
+          refreshTweet();
+          }
+          return res;
+        })
+        
+        .then((res) => {
+          if (!res.errors && refreshReply) {
+            refreshReply();
+          }
+          return res;
+        })
+        .then((res) => {
+          if (!res.errors && refreshReply) {
+            refreshReply();
+          }
+          return res;
+        })
+        .then((res) => {
+          if (!res.errors) {
+          setShowEditModal(false);
+          }
+          return res;
+        })
         return editedReply;
     }
   
