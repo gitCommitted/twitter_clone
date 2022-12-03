@@ -37,7 +37,7 @@ const NavBar = () => {
               <LoginForm setShowModal={setShowModal2} />
         </Modal>)}
         {isLoggedIn && (
-      <NavLink to="/login" className='logo'>
+      <NavLink to="/home" className='logo'>
           <img className='logo' src={logo}/>
       </NavLink>)}
         {isLoggedIn && 
