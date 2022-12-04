@@ -61,8 +61,10 @@ function TweetCreateForm({ setShowModal, refreshTweet }) {
         placeholder='Write Tweet Here'
         required
       />
+      <div className='image-title'>Add Image (optional)</div>
       <input
           className='modal-input-title file-btn'
+          id='imageButton'
           type='file'
           accept='image/*'
           onChange={(e) => setImage(e.target.files[0])}

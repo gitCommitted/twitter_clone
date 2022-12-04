@@ -113,3 +113,10 @@ i{
   max-width: 400px;
   max-height: 400px;
 }
+.image-title{
+  color: white;
+  padding-top: 20px
+}
+#imageButton{
+  color: white;
+}
