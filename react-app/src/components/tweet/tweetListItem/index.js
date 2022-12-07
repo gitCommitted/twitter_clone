@@ -32,15 +32,41 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
       <div className='t-container'>
         <div className='tlist-detail'>
           {sessionUser && (
-        <div className='t-user-box'>
+        // <div className='t-user-box'>
         <NavLink className="t-user" to={`/tweets/${tweet?.id}`}>
-        <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</NavLink>
-        </div>)}
+        {tweet?.userPic &&
+          <img
+          className='profile-pic'
+          src={tweet?.userPic}
+          alt={tweet?.userPic}
+          />}
+          {!tweet?.userPic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+          <span className='name-box'>
+          {tweet?.username}
+          <div className='name-at'>
+          @{tweet?.username}
+          </div>
+          </span></NavLink>
+        )}
         {!sessionUser && (
-        <div className='t-user-box'>
+        // <div className='t-user-box'>
         <Link className="t-user" onClick={() => setShowModal(true)}>
-        <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</Link>
-        </div>)}
+        {tweet?.userPic &&
+          <img
+          className='profile-pic'
+          src={tweet?.userPic}
+          alt={tweet?.userPic}
+          />}
+          {!tweet?.userPic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+          <span className='name-box'>
+          {tweet?.username}
+          <div className='name-at'>
+          @{tweet?.username}
+          </div>
+          </span></Link>
+        )}
         {showModal && (
         <Modal onClose={() => setShowModal(false)}>
               <LoginForm setShowModal={setShowModal} tweetId={tweet?.id} refreshTweet={refreshTweet}/>

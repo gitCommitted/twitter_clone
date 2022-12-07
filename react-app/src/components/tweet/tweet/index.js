@@ -30,7 +30,20 @@ function Tweet({tweet, refreshTweet}) {
       <div className='t-container'>
         <div className='t-detail'>
           <div className='t-user'>
-          <i className="fa-solid fa-circle-user"></i>Posted By: {tweet?.username}</div>
+            {tweet?.userPic &&
+          <img
+          className='profile-pic'
+          src={tweet?.userPic}
+          alt={tweet?.userPic}
+          />}
+          {!tweet?.userPic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+          <span className='name-box'>
+          {tweet?.username}
+          <div className='name-at'>
+          @{tweet?.username}
+          </div>
+          </span></div>
           <div className='t-body-detail'>{tweet?.body}</div>
           <div className='t-image-box'>
             <img

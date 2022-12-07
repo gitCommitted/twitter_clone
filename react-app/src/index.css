@@ -76,15 +76,16 @@ nav {
   padding-bottom: 12px;
 }
 .t-user {
-  color: #657786;
-  font-size: 80%;
+  color: black;
+  font-size: 95%;
   padding-top: 10px;
   padding-bottom: 10px;
+  display: flex;
 }
-.t-user-box{
+/* .t-user-box{
   padding-top: 10px;
   padding-bottom: 12px;
-}
+} */
 h3 {
   padding-left: 20px;
   padding-top: 20px;
@@ -141,4 +142,13 @@ i{
 }
 .fa-solid.fa-circle-user{
   font-size: 60px;
+}
+.t-body-detail{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.t-body {
+  
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
