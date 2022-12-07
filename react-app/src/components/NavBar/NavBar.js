@@ -63,12 +63,12 @@ const NavBar = () => {
         <li>
           <DemoLogin />
         </li>}
-        {isLoggedIn &&
+        {/* {isLoggedIn &&
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
           <i className="fa-solid fa-users"></i>   Users
           </NavLink>
-        </li>}
+        </li>} */}
         {isLoggedIn &&
         <li>
           <NavLink to='/profile' exact={true} activeClassName='active'>
