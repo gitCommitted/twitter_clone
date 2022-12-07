@@ -9,13 +9,20 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [pic, setPic] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      
+      formData.append('username', username)
+      formData.append('email', email)
+      formData.append('password', password)
+      formData.append('pic', pic)
+      const data = await dispatch(signUp(formData));
       if (data) {
         setErrors(data)
       }
@@ -42,6 +49,11 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updatePic = (e) => {
+    setPic(e.target.files[0]);
+  };
+
 
   if (user) {
     return <Redirect to='/home' />;
@@ -76,6 +88,14 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
+      <div className='image-title'>Add Profile Pic (optional)</div>
+      <input
+          className='modal-input-title file-btn'
+          id='imageButton'
+          type='file'
+          accept='pic/*'
+          onChange={updatePic}
+        />
       <div>
         <label className='modal-input-title-label'>Password</label>
         <input
