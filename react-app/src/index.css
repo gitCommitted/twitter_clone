@@ -82,6 +82,13 @@ nav {
   padding-bottom: 10px;
   display: flex;
 }
+.t-user-home {
+  color: black;
+  font-size: 95%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  display: flex;
+}
 /* .t-user-box{
   padding-top: 10px;
   padding-bottom: 12px;

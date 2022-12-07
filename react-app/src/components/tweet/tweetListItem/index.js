@@ -33,7 +33,7 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
         <div className='tlist-detail'>
           {sessionUser && (
         // <div className='t-user-box'>
-        <NavLink className="t-user" to={`/tweets/${tweet?.id}`}>
+        <NavLink className="t-user-home" to={`/tweets/${tweet?.id}`}>
         {tweet?.userPic &&
           <img
           className='profile-pic'
@@ -51,7 +51,7 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
         )}
         {!sessionUser && (
         // <div className='t-user-box'>
-        <Link className="t-user" onClick={() => setShowModal(true)}>
+        <Link className="t-user-home" onClick={() => setShowModal(true)}>
         {tweet?.userPic &&
           <img
           className='profile-pic'
