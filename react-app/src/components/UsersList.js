@@ -17,9 +17,8 @@ function UsersList() {
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
+  const userComponents = (user) => {
     return (
-      
       <div>
         {sessionUser &&
           <li key={user.id}  className='user-box'>
@@ -34,7 +33,6 @@ function UsersList() {
           <i className="fa-solid fa-circle-user"></i>}
           <span className='name-box'>
           {user.username}
-          
           <div className='name-at'>
           @{user.username}
           </div>
@@ -43,10 +41,7 @@ function UsersList() {
           </li> }
           {!sessionUser &&
           <li key={user.id}  className='user-box'>
-        <Link onClick={() => setShowModal(true)} className='user-box'>
-        
         {user?.pic &&
-     
         <img
             className='profile-pic'
             src={user?.pic}
@@ -56,28 +51,82 @@ function UsersList() {
           <i className="fa-solid fa-circle-user"></i>}
           <span className='name-box'>
           {user.username}
-          
           <div className='name-at'>
           @{user.username}
           </div>
           </span>
-          </Link>
-          </li>}
-          {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-              <LoginForm setShowModal={setShowModal}/>
-        </Modal>)}
-      
+          </li>
+          }
       </div>
-     
     );
-  });
+  };
+  const userComponents2 = (user) => {
+    return (
+      <div>
+        {sessionUser &&
+          <li key={user.id}  className='user-box'>
+        {user?.pic &&
+        <img
+            className='profile-pic'
+            src={user?.pic}
+            alt={user?.pic}
+            />}
+          {!user?.pic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+          <span className='name-box'>
+          {user.username}
+          <div className='name-at'>
+          @{user.username}
+          </div>
+          </span>
+          </li> }
+          {!sessionUser &&
+          <li key={user.id}  className='user-box'>
+        {user?.pic &&
+        <img
+            className='profile-pic'
+            src={user?.pic}
+            alt={user?.pic}
+            />}
+          {!user?.pic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+          <span className='name-box'>
+          {user.username}
+          <div className='name-at'>
+          @{user.username}
+          </div>
+          </span>
+          </li>
+          }
+      </div>
+    );
+  };
 
 
   return (
     <div id='user-feature'>
-      <h3 className='userh3'>User List </h3>
-      <ul>{userComponents}</ul>
+      {sessionUser && 
+      <div>
+      <h3 className='userh3'>Users </h3>
+      <ul>{
+      users.map(user => userComponents(user))
+      }</ul>
+      </div>
+      }
+       {!sessionUser && 
+      <div>
+        <Link className='login-link' onClick={() => setShowModal(true)}>
+      <h3 className='userh3'>Who's on i-tweet?</h3>
+      <ul>{
+      users.map(user => userComponents2(user))
+      }</ul>
+      </Link>
+      </div>
+      }
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+              <LoginForm setShowModal={setShowModal}/>
+        </Modal>)}
     </div>
   );
 }
