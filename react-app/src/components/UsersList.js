@@ -17,11 +17,14 @@ function UsersList() {
     return (
       <li key={user.id}  className='user-box'>
         <NavLink to={`/users/${user.id}`} className='user-box'>
+        {user?.pic &&
         <img
             className='profile-pic'
             src={user?.pic}
             alt={user?.pic}
-            />
+            />}
+          {!user?.pic  &&
+          <i className="fa-solid fa-circle-user"></i>}
           <span className='name-box'>
           {user.username}
           

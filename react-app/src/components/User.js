@@ -25,6 +25,16 @@ function User() {
       <h3>User Details</h3>
     <ul>
       <li>
+      {user?.pic &&
+        <img
+            className='profile-pic'
+            src={user?.pic}
+            alt={user?.pic}
+            />}
+      {!user?.pic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+      </li>
+      <li>
         <strong>User Id</strong> {userId}
       </li>
       <li>

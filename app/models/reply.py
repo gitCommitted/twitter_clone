@@ -22,11 +22,16 @@ class Reply(db.Model):
         user = User.query.filter(User.id == self.userId).first()
         return user.username
 
+    def get_userPic(self):
+        user = User.query.filter(User.id == self.userId).first()
+        return user.pic
+
     def to_dict(self):
         return {
             'id': self.id,
             'userId': self.userId,
             'username': self.get_user(),
+            'userPic': self.get_userPic(),
             'tweetId': self.tweetId,
             'body': self.body,
             'created_on': self.created_on,
@@ -38,6 +43,7 @@ class Reply(db.Model):
             'id': self.id,
             'userId': self.userId,
             'username': self.get_user(),
+            'userPic': self.get_userPic(),
             'tweetId': self.tweetId,
             'body': self.body,
             'created_on': self.created_on,
