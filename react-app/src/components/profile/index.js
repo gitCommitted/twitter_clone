@@ -15,6 +15,7 @@ const Profile = () => {
     const replies = Object.values(useSelector((state) => state.replies?.user_replies ? state.replies.user_replies : state.replies));
     const [tweet, setTweet] = useState('');
     const [errors, setErrors] = useState([]);
+    const user = useSelector((state) => state.session.user);
     const refreshTweet = () => {
         dispatch(fetchUserTweets());
         }
@@ -33,6 +34,25 @@ const Profile = () => {
 console.log()
     return (
         <div id='mid'>
+            <h3>My Profile</h3>
+    <ul>
+      <li>
+      {user?.pic &&
+        <img
+            className='profile-pic'
+            src={user?.pic}
+            alt={user?.pic}
+            />}
+      {!user?.pic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+      </li>
+      <li className='myprof'>User Id: {user.id}
+      </li>
+      <li className='myprof'>Username: {user.username}
+      </li>
+      <li className='myprof'>Email: {user.email}
+      </li>
+    </ul>
         <h3>My Tweets</h3>
      
             {tweets.map((tweet) => (

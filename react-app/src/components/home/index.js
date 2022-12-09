@@ -24,6 +24,7 @@ const Home = () => {
         // });
     }, [dispatch]);
     console.log()
+    const tweetR = tweets.reverse();
     return (
         <div id='mid'>
         <h3>Home</h3>

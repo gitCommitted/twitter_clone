@@ -107,10 +107,16 @@ function UsersList() {
     <div id='user-feature'>
       {sessionUser && 
       <div>
-      <h3 className='userh3'>Users </h3>
-      <ul>{
-      users.map(user => userComponents(user))
-      }</ul>
+      <h3 className='userh3'>Other Users To Watch</h3>
+      <ul>
+        {
+          users.map(user => {
+            if(user.id !== sessionUser.id) {
+            return userComponents(user)
+            }
+          })
+        }
+      </ul>
       </div>
       }
        {!sessionUser && 
