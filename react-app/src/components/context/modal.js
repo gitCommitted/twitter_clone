@@ -1,8 +1,11 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
+
 import ReactDOM from 'react-dom';
 import './modal.css';
+import React, { useContext, useRef, useState, useEffect } from 'react';
+
 
 const ModalContext = React.createContext();
+
 
 export function ModalProvider({ children }) {
   const modalRef = useRef();
@@ -12,11 +15,13 @@ export function ModalProvider({ children }) {
     setValue(modalRef.current);
   }, []);
 
+
   return (
-    <>
+    
+    <div>
       <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
       <div ref={modalRef} />
-    </>
+    </div>
   );
 }
 
