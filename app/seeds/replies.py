@@ -31,12 +31,18 @@ def seed_replies():
         tweetId=6,
         body="Serenity now!"
     )
+    reply7 = Reply(
+        userId=1,
+        tweetId=4,
+        body="I'm a reply"
+    )
     db.session.add(reply1)
     db.session.add(reply2)
     db.session.add(reply3)
     db.session.add(reply4)
     db.session.add(reply5)
     db.session.add(reply6)
+    db.session.add(reply7)
     db.session.commit()
 
 def undo_replies():
