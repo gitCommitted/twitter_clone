@@ -123,9 +123,15 @@ function UsersList() {
       <div>
         <Link className='login-link' onClick={() => setShowModal(true)}>
       <h3 className='userh3'>Who's on i-tweet?</h3>
-      <ul>{
-      users.map(user => userComponents2(user))
-      }</ul>
+      <ul>
+        {
+          users.map(user => {
+            if(user.id !== 1) {
+            return userComponents(user)
+            }
+          })
+        }
+        </ul>
       </Link>
       </div>
       }

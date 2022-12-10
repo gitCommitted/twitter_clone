@@ -48,6 +48,10 @@ def seed_likes():
     db.session.add(like4)
     db.session.add(like5)
     db.session.add(like6)
+    db.session.add(like7)
+    db.session.add(like8)
+    db.session.add(like9)
+    db.session.add(like10)
     db.session.commit()
 
 def undo_likes():
