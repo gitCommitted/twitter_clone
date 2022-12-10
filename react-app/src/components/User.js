@@ -23,7 +23,7 @@ function User() {
   return (
     <div id='mid'>
       <h3>User Details</h3>
-    <ul>
+    <ul className='userD'>
       <li>
       {user?.pic &&
         <img

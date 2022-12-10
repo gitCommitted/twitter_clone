@@ -182,6 +182,10 @@ i{
   margin-bottom: 20px;
 }
 .myprof{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.pro-pic{
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -210,4 +214,13 @@ i{
 .alist{    
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.userD{
+  border-bottom: 1px solid #E1E8ED;
+  margin-bottom: 0;
+}
+.pro1{
+  border-bottom: 1px solid #E1E8ED;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
 }

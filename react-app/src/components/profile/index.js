@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import TweetListItem from '../tweet/tweetListItem';
 import { fetchGetUserReplies } from '../../store/reply';
 import Reply from '../reply';
+import Reply2 from '../reply/index2';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -35,8 +36,8 @@ const Profile = () => {
     return (
         <div id='mid'>
             <h3>My Profile</h3>
-    <ul>
-      <li>
+    <ul className='pro1'>
+      <li className='pro-pic'>
       {user?.pic &&
         <img
             className='profile-pic'
@@ -65,7 +66,7 @@ const Profile = () => {
         
             {replies?.map((reply) => (
                 <div>
-                    <Reply reply={reply} refreshTweet={refreshTweet} refreshReply={refreshReply}/>
+                    <Reply2 reply={reply} refreshTweet={refreshTweet} refreshReply={refreshReply}/>
                 </div>
             ))}
         
