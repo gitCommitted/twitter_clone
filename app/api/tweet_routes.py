@@ -36,6 +36,8 @@ def create_tweet():
         userId=current_user.id,
         image=form.data['image']
         )
+        if not allowed_file(file.filename):
+            return {'errors': ['file type not permitted']}, 400
         file.filename = get_unique_filename(file.filename)
         upload = upload_file_to_s3(file)
         tweet.image = upload["url"]

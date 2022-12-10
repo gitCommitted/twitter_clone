@@ -71,6 +71,8 @@ def sign_up():
             password=form.data['password'],
             pic = form.data['pic']
         )
+        if not allowed_file(file.filename):
+            return {'errors': ['file type not permitted']}, 400
         file.filename = get_unique_filename(file.filename)
         upload = upload_file_to_s3(file)
         user.pic = upload["url"]
