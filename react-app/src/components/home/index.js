@@ -23,7 +23,7 @@ const Home = () => {
         //     if (data && data.errors) setErrors(data.errors);
         // });
     }, [dispatch]);
-    console.log()
+    // console.log()
     const tweetR = tweets.reverse();
     return (
         <div id='mid'>

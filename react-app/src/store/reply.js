@@ -108,7 +108,7 @@ export const fetchDeleteReplies =  (replyId) => async (dispatch) => {
 
     if(response.ok){
         const responseMessage = await response.json();
-        console.log('MESSAGE', responseMessage)
+        // console.log('MESSAGE', responseMessage)
         dispatch(deleteReplies(replyId));
     };
 

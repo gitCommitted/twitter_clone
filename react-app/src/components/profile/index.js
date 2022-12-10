@@ -31,7 +31,7 @@ const Profile = () => {
         //     if (data && data.errors) setErrors(data.errors);
         // });
     }, [dispatch]);
-console.log()
+// console.log()
     return (
         <div id='mid'>
             <h3>My Profile</h3>
