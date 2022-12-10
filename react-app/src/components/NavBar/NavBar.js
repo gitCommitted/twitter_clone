@@ -28,6 +28,8 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
+
+
       {!isLoggedIn && (
       <Link onClick={() => setShowModal2(true)} className='logo'>
           <img className='logo' src={logo}/>
@@ -46,11 +48,12 @@ const NavBar = () => {
           <i className="fa-solid fa-house"></i>   Home
           </NavLink>
         </li>}
+        {isLoggedIn &&
         <li>
-          <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')}>
+        <NavLink to='/about' exact={true} activeClassName='active'>
           <i className="fa-brands fa-github"></i>  About
-          </Link>
-        </li>
+          </NavLink>
+        </li>}
         {!isLoggedIn && 
         <li>
           <LoginFormModal />
