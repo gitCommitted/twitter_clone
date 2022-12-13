@@ -1,4 +1,54 @@
 # twitter_clone
+i-tweet is a twitter clone. It is a full-stack web application with a RESTful API backend using React, Redux, JavaScript, CSS, HTML, Python and more. 
+
+## Features:
+1. Create an account, login, logout, and login with a Demo account.
+2. Create, edit, and delete tweets.
+3. Create, edit, and delete replies.
+4. Like and unlike tweets.
+5. View feed, profile, and other users' profiles.
+6. Upload images for a profile picture when signing up
+7. Upload images when creating and editing a tweet
+ 
+## Technologies used:
+1. Docker
+2. React
+3. Redux
+4. Python
+5. Flask
+6. SQLAlchemy
+7. PostgreSQL
+8. AWS S3
+9. HTML
+10. CSS
+11. JavaScript
+
+## **Screen Shots**
+
+### Home Page
+<img src='./react-app/public/homepage.png'>
+
+### Tweet Details and Replies
+<img src='./react-app/public/details.png'>
+
+### User Profile
+<img src='./react-app/public/profile.png'>
+
+## **To get started on your local environment**
+
+1. Clone the repo and run `pipenv install` to install the dependencies
+2. Create .env file, for example:
+    ```
+    SECRET_KEY=[add secret key here]
+    DATABASE_URL=sqlite:///dev.db
+    ```
+3. Start pipenv shell `pipenv shell`
+4. Migrate and seed database `flask db migrate` and `flask seed all`
+5. Run flask `flask run`
+6. cd into the `react-app`
+7. run `npm install` to install the frontend dependencies
+8. run `npm start` to start the frontend
+9. go to [localhost:3000](localhost:3000) in your browser
 
 # **API Documentation**
 ### Backend Routes
