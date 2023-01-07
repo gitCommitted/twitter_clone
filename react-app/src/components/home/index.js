@@ -5,6 +5,7 @@ import { fetchAllTweets } from '../../store/tweets';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TweetListItem from '../tweet/tweetListItem';
+import MobileNav from '../NavBar/MobileNav';
 
 const Home = () => {
     const dispatch = useDispatch();

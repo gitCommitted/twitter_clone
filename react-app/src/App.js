@@ -15,6 +15,7 @@ import LandingPage from './components/LandingPage';
 import LoginFormModal from './components/forms/login';
 import About from './components/about';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -33,7 +34,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      
       <Switch>
         <Route path='/login' exact={true}>
           <LoginFormModal />
