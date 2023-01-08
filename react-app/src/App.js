@@ -14,6 +14,8 @@ import TweetDetails from './components/tweet/tweetDetailPage';
 import LandingPage from './components/LandingPage';
 import LoginFormModal from './components/forms/login';
 import About from './components/about';
+import MyTweets from './components/profile/mytweets';
+import MyReplies from './components/profile/myreplies';
 
 
 function App() {
@@ -52,6 +54,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/profile' exact={true} >
           <Profile />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/tweets' exact={true} >
+          <MyTweets />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/replies' exact={true} >
+          <MyReplies />
         </ProtectedRoute>
         <ProtectedRoute path='/tweets/:tweetId' exact={true} >
           <TweetDetails />

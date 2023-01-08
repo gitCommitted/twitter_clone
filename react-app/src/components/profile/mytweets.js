@@ -10,7 +10,7 @@ import Reply from '../reply';
 import Reply2 from '../reply/index2';
 import ProfileNav from './profileNav';
 
-const Profile = () => {
+const MyTweets = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const tweets = Object.values(useSelector((state) => state.tweets?.user_tweets ? state.tweets.user_tweets : state.tweets));
@@ -37,29 +37,19 @@ const Profile = () => {
     return (
         <div id='mid'>
             <h3>My Profile</h3>
-            <ProfileNav current='deets'/>
-    <ul className='pro1'>
-      <li className='pro-pic'>
-      {user?.pic &&
-        <img
-            className='profile-pic'
-            src={user?.pic}
-            alt={user?.pic}
-            />}
-      {!user?.pic  &&
-          <i className="fa-solid fa-circle-user"></i>}
-      </li>
-      <li className='myprof'>User Id: {user.id}
-      </li>
-      <li className='myprof'>Username: {user.username}
-      </li>
-      <li className='myprof'>Email: {user.email}
-      </li>
-    </ul>
+            <ProfileNav current='tweets'/>
+    
+     
+            {tweets.map((tweet) => (
+                <div id="prof-list">
+                <TweetListItem tweet={tweet} refreshTweet={refreshTweet}  />
+            </div>
+            ))}
         
+       
         
         </div>
     );
     }
 
-export default Profile;
+export default MyTweets;
