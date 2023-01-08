@@ -294,7 +294,11 @@ nav {
 }
 @media (max-width: 600px) {
   #mid {
-    max-width: 300px;
+    max-width: 350px;
+}
+.image-pic{
+  max-width: 300px;
+  max-height: 300px;
 }
 }
 @media (min-width: 1141px) {
