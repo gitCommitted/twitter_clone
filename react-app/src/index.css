@@ -306,4 +306,9 @@ nav {
       display: none;
   }
 }
+@media (max-width: 1050px) {
+  #user-feature {
+      display: none;
+  }
+}
 

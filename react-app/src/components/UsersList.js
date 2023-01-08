@@ -104,6 +104,7 @@ function UsersList() {
 
 
   return (
+  <>
     <div id='user-feature'>
       {sessionUser && 
       <div>
@@ -140,6 +141,9 @@ function UsersList() {
               <LoginForm setShowModal={setShowModal}/>
         </Modal>)}
     </div>
+    <div id='user-feature2'></div>
+    </>
+    
   );
 }
 
