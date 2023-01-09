@@ -49,11 +49,14 @@ const Profile = () => {
       {!user?.pic  &&
           <i className="fa-solid fa-circle-user"></i>}
       </li>
-      <li className='myprof'>User Id: {user.id}
+      <li>
+        <strong>User Id: </strong> {user.id}
       </li>
-      <li className='myprof'>Username: {user.username}
+      <li>
+        <strong>Username: </strong> {user.username}
       </li>
-      <li className='myprof'>Email: {user.email}
+      <li>
+        <strong>Email: </strong> {user.email}
       </li>
     </ul>
         
