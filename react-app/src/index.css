@@ -271,6 +271,18 @@ i{
 #prof-list, .userD {
   border-top: 1px solid #E1E8ED;
 }
+#about2 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  color: #657786;
+}
+#about3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  color: #657786;
+}
 
 @media (max-width: 1670px) {
   nav {
@@ -287,11 +299,9 @@ i{
   nav {
     padding-left: 1px;
 }
-  #user-feature {
-    padding-right: 1px;
-  }
+  
 }
-@media (max-width: 1140px) {
+@media (max-width: 1205px) {
 nav {
   padding-left: 1px;
   padding-right: 1px;
@@ -336,7 +346,7 @@ nav {
   max-height: 300px;
 }
 }
-@media (min-width: 1141px) {
+@media (min-width: 1206px) {
   #bars {
       display: none;
   }

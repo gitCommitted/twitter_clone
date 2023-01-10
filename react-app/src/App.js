@@ -18,6 +18,7 @@ import MyTweets from './components/profile/mytweets';
 import MyReplies from './components/profile/myreplies';
 import UserTweets from './components/UsersTweets';
 import UserReplies from './components/UsersReplies';
+import About2 from './components/about/about2';
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/about2' exact={true}>
+          <About2 />
         </Route>
         <ProtectedRoute path='/about' exact={true}>
           <About />

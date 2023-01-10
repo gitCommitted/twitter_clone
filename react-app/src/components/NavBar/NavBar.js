@@ -12,6 +12,8 @@ import LoginFormModal from '../forms/login';
 import SignupFormModal from '../forms/signup';
 import LoginForm from '../auth/LoginForm';
 import { logout } from '../../store/session';
+import SignUpForm from '../auth/SignUpForm';
+import DemoLogin2 from '../auth/DemoLoginMobile';
 
 
 
@@ -25,10 +27,15 @@ const NavBar = () => {
   const [showModal3, setShowModal3] = useState(false);
   const [showModal4, setShowModal4] = useState(false);
   const [showModal5, setShowModal5] = useState(false);
+  const [showModal6, setShowModal6] = useState(false);
+  const [showModal7, setShowModal7] = useState(false);
+  const [showModal8, setShowModal8] = useState(false);
 
   useEffect(() => {
     user ? setIsLoggedIn(true) : setIsLoggedIn(false)
   }, [user]);
+
+
 
   const onLogout = async (e) => {
     await dispatch(logout());
@@ -69,6 +76,12 @@ const NavBar = () => {
           <i className="fa-brands fa-github"></i>  About
           </NavLink>
         </li>}
+        {!isLoggedIn &&
+        <li>
+        <NavLink to='/about2' exact={true} activeClassName='active'>
+          <i className="fa-brands fa-github"></i>  About
+          </NavLink>
+        </li>}
         {!isLoggedIn && 
         <li>
           <LoginFormModal />
@@ -81,6 +94,7 @@ const NavBar = () => {
         <li>
           <DemoLogin />
         </li>}
+        
         {/* {isLoggedIn &&
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
@@ -142,17 +156,38 @@ const NavBar = () => {
   <NavLink to='/about' exact={true} activeClassName='active'>
     <i className="fa-brands fa-github"></i></NavLink>
   </li>}
+  {!isLoggedIn &&
+        <li>
+        <NavLink to='/about2' exact={true} activeClassName='active'>
+          <i className="fa-brands fa-github"></i></NavLink>
+        </li>}
   {!isLoggedIn && 
   <li>
-    <LoginFormModal />
+   <Link
+        onClick={() => setShowModal6(true)}
+      >
+      <i className="fa-solid fa-arrow-right-to-bracket"></i></Link>
+      {showModal6 && (
+        <Modal onClose={() => setShowModal6(false)}>
+          <LoginForm setShowModal={setShowModal6} />
+        </Modal>
+      )}
   </li>}
   {!isLoggedIn &&
   <li>
-    <SignupFormModal />
+    <Link
+        onClick={() => setShowModal7(true)}
+      >
+      <i className="fa-solid fa-user-plus"></i></Link>
+      {showModal7 && (
+        <Modal onClose={() => setShowModal7(false)}>
+          <SignUpForm setShowModal={setShowModal7} />
+        </Modal>
+      )}
   </li>}
-  {!isLoggedIn && 
+    {!isLoggedIn &&
   <li>
-    <DemoLogin />
+   <DemoLogin2 />
   </li>}
   {/* {isLoggedIn &&
   <li>
