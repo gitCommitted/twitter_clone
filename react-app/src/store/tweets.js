@@ -2,6 +2,7 @@
 const GET_ALL_TWEETS = 'tweets/get';
 const GET_ALL_TWEETS2 = 'tweets2/get';
 const GET_USER_TWEETS = 'user_tweets/get';
+const GET_USER_TWEETS_BY_ID = 'user_tweets_by_id/get';
 const GET_TWEET = 'tweet/get';
 const CREATE_TWEETS = 'tweets/create';
 const EDIT_TWEETS = 'tweets/edit';
@@ -30,6 +31,12 @@ export const getAllTweets2 = (tweets) => {
 export const getUserTweets = (tweets) => ({
         type: GET_USER_TWEETS,
         payload: tweets 
+});
+
+// GET USER Tweets by ID
+export const getUserTweetsById = (tweets) => ({
+    type: GET_USER_TWEETS_BY_ID,
+    payload: tweets
 });
 
 // GET One Tweet
@@ -118,6 +125,19 @@ export const fetchUserTweets = () => async (dispatch) => {
         return res;
     };
     // return res
+};
+
+// GET USER Tweets by ID thunk
+export const fetchUserTweetsById = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}/tweets`);
+
+
+    if (res.ok){
+        const tweets = await res.json();
+        dispatch(getUserTweets(tweets));
+        return tweets
+    };
+    return res;
 };
 
 // GET one Tweet thunk
@@ -228,6 +248,10 @@ const tweetsReducer = (state = initialState, action) => {
             action.payload['tweets'].forEach(tweet => newState.all_tweets[tweet.id] = tweet)
             return newState;
         case GET_USER_TWEETS:
+            newState.user_tweets = {}
+            action.payload['tweets'].forEach(tweet => newState.user_tweets[tweet.id] = tweet)
+            return newState;
+        case GET_USER_TWEETS_BY_ID:
             newState.user_tweets = {}
             action.payload['tweets'].forEach(tweet => newState.user_tweets[tweet.id] = tweet)
             return newState;

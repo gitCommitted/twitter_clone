@@ -16,6 +16,8 @@ import LoginFormModal from './components/forms/login';
 import About from './components/about';
 import MyTweets from './components/profile/mytweets';
 import MyReplies from './components/profile/myreplies';
+import UserTweets from './components/UsersTweets';
+import UserReplies from './components/UsersReplies';
 
 
 function App() {
@@ -60,6 +62,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/profile/replies' exact={true} >
           <MyReplies />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/tweets' exact={true} >
+          <UserTweets />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/replies' exact={true} >
+          <UserReplies />
         </ProtectedRoute>
         <ProtectedRoute path='/tweets/:tweetId' exact={true} >
           <TweetDetails />

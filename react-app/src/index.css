@@ -268,7 +268,7 @@ i{
 .profile-nav-replies {
   justify-self: right;
 }
-#prof-list {
+#prof-list, .userD {
   border-top: 1px solid #E1E8ED;
 }
 

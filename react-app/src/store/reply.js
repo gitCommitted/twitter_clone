@@ -1,5 +1,6 @@
 /******** Constants ********/
 const GET_USER_REPLIES = 'replies/load';
+const GET_USER_REPLIES_BY_ID = 'replies_by_id/load';
 const CREATE_REPLIES = 'replies/create'
 const EDIT_REPLIES = 'replies/update';
 const DELETE_REPLIES = 'replies/delete';
@@ -7,6 +8,11 @@ const DELETE_REPLIES = 'replies/delete';
 /******** Actions ********/
 export const getUserReplies = (replies) => ({
     type: GET_USER_REPLIES,
+    payload: replies
+})
+
+export const getUserRepliesById = (replies) => ({
+    type: GET_USER_REPLIES_BY_ID,
     payload: replies
 })
 
@@ -48,6 +54,19 @@ export const fetchGetUserReplies = () => async (dispatch) => {
     
  
 }
+export const fetchGetUserRepliesById = (userId) => async (dispatch) => {
+    let response;
+
+    response = await fetch(`/api/users/${userId}/replies`);
+
+    if(response.ok){
+        const replies = await response.json();
+        dispatch(getUserRepliesById(replies));
+        return response;
+    };
+
+}
+
 
 export const fetchCreateReplies = (reply,tweetId) => async (dispatch) => {
     let response;
@@ -126,6 +145,10 @@ const repliesReducer = (state = initialState, action) => {
         case GET_USER_REPLIES:
             newState.user_replies = {};
             action.payload['replies'].forEach(reply => newState.user_replies[reply.id] = reply);
+            return newState;
+        case GET_USER_REPLIES_BY_ID:
+            newState.user_replies_by_id = {};
+            action.payload['replies'].forEach(reply => newState.user_replies_by_id[reply.id] = reply);
             return newState;
         case CREATE_REPLIES:
             newState = {[action.payload.reply.id]: action.payload.reply }

@@ -11,6 +11,13 @@ def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
 
+@user_routes.route('/<int:id>/replies')
+@login_required
+def usersReplies(id):
+    user = User.query.get(id)
+    if user is None:
+        return {'errors': ["cant find user"]}, 404
+    return {'replies': [reply.to_dict2() for reply in user.replies]}
 
 @user_routes.route('/<int:id>')
 @login_required
@@ -77,3 +84,12 @@ def myTweets():
 def myReplies():
     user = User.query.get(current_user.id)
     return {'replies': [reply.to_dict2() for reply in user.replies]}
+
+@user_routes.route('/<int:id>/tweets')
+@login_required
+def usersTweets(id):
+    user = User.query.get(id)
+    if user is None:
+        return {'errors': ["cant find user"]}, 404
+    return {'tweets': [tweet.to_dict2() for tweet in user.tweets]}
+
