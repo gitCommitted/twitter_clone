@@ -46,7 +46,7 @@ function UserReplies() {
   return (
   
     <div id='mid'>
-      <h3>{user?.username}'s Profile</h3>
+      <h3>User Profile</h3>
     <UsersNav current='replies' userId={userId}/>
     {replies.length > 0 ?
     

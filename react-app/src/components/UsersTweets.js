@@ -37,7 +37,7 @@ function UserTweets() {
   return (
   
     <div id='mid'>
-      <h3>{user?.username}'s Profile</h3>
+      <h3>User Profile</h3>
     <UsersNav current='tweets' userId={userId}/>
     {tweetsRes.length > 0 ?
     

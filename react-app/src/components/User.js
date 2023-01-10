@@ -23,7 +23,7 @@ function User() {
 
   return (
     <div id='mid'>
-      <h3>{user?.username}'s Profile</h3>
+      <h3>User Profile</h3>
     <UsersNav current='deets' userId={userId}/>
     <ul className='userD'>
       <li>
