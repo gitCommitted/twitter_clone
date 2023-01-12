@@ -22,9 +22,9 @@ const DemoLogin = () => {
 
   return (
     <div>
-    <Link onClick={onLogin}>
-    <i className="fa-solid fa-id-card"></i>   Demo Login
-    </Link> 
+      <Link onClick={onLogin}>
+        <i className="fa-solid fa-id-card"></i>   Demo Login
+      </Link> 
     </div>
   );
 };

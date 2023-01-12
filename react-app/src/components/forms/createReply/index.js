@@ -1,9 +1,8 @@
-import './createReply.css';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import './createReply.css';
+import React, {  useState } from 'react';
+import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { fetchCreateReplies } from '../../../store/reply';
-import {Modal} from '../../context/modal';
 
 function ReplyCreateForm({ setShowModal, tweetId, refreshTweet }) {
   const dispatch = useDispatch();

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
 
+//demo login button for mobile screens
 const DemoLogin2 = () => {
   const [errors, setErrors] = useState([]);
   const user = useSelector(state => state.session.user);
@@ -22,8 +23,9 @@ const DemoLogin2 = () => {
 
   return (
     <div>
-    <Link onClick={onLogin}>
-    <i className="fa-solid fa-id-card"></i></Link> 
+        <Link onClick={onLogin}>
+            <i className="fa-solid fa-id-card"></i>
+        </Link> 
     </div>
   );
 };

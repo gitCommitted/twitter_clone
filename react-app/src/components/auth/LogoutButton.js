@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../../store/session';
@@ -8,13 +8,8 @@ const LogoutButton = () => {
   const onLogout = async (e) => {
     await dispatch(logout());
   };
-  // useEffect(() => {
-  //   dispatch(logout())
-  //   }, [dispatch]);
 
-  // return <button onClick={onLogout}>Logout</button>;
-
-return (
+  return (
     <div>
        
           <Link onClick={onLogout}>
@@ -22,7 +17,7 @@ return (
           </Link> 
           
     </div>
-)
+  )
 };
 
 export default LogoutButton;

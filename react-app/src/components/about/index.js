@@ -1,11 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { fetchAllTweets2 } from '../../store/tweets';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import TweetListItem from '../tweet/tweetListItem';
-import { Modal } from '../context/modal';
-import LoginForm from '../auth/LoginForm';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -15,9 +8,9 @@ const About = () => {
             <p className='intro'>
             i-tweet is a twitter clone. It is a full-stack web application with a RESTful API backend using React, Redux, JavaScript, CSS, HTML, Python and more. 
             </p>
-            <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone/wiki')} className='repo'>
-           Click here to checkout the i-tweet wiki on github 
-            </Link>
+                <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone/wiki')} className='repo'>
+                Click here to checkout the i-tweet wiki on github 
+                </Link>
             <p className='aboutList'>
                 Features:
                 <ul>
@@ -47,12 +40,12 @@ const About = () => {
                 </ul>
             </p>
             <p >
-            <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')} className='repo2'>
-           Click here to checkout the i-tweet repo on github 
-            </Link>
+                <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')} className='repo2'>
+                Click here to checkout the i-tweet repo on github 
+                </Link>
             </p>
-            
         </div>
     );
-    }
+}
+
 export default About;

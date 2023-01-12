@@ -1,27 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { fetchAllTweets2 } from '../../store/tweets';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import TweetListItem from '../tweet/tweetListItem';
-import { Modal } from '../context/modal';
-import LoginForm from '../auth/LoginForm';
 import { Link } from 'react-router-dom';
 
+//second about page that will render if user is not logged in
 const About2 = () => {
     return (
         <div id='mid'>
             <h3>About i-tweet  </h3>            
-            <NavLink to='/' exact={true} activeClassName='active' id='about3'>
-          <i className="fa-solid fa-house" id='about2'></i>  Back to Explore i-tweet
-          </NavLink>
-          
+                <NavLink to='/' exact={true} activeClassName='active' id='about3'>
+                    <i className="fa-solid fa-house" id='about2'></i>  Back to Explore i-tweet
+                </NavLink>
             <p className='intro'>
             i-tweet is a twitter clone. It is a full-stack web application with a RESTful API backend using React, Redux, JavaScript, CSS, HTML, Python and more. 
             </p>
-            <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone/wiki')} className='repo'>
-           Click here to checkout the i-tweet wiki on github 
-            </Link>
+                <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone/wiki')} className='repo'>
+                Click here to checkout the i-tweet wiki on github 
+                </Link>
             <p className='aboutList'>
                 Features:
                 <ul>
@@ -51,12 +45,12 @@ const About2 = () => {
                 </ul>
             </p>
             <p >
-            <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')} className='repo2'>
-           Click here to checkout the i-tweet repo on github 
-            </Link>
+                <Link onClick={() => window.open('https://github.com/gitCommitted/twitter_clone')} className='repo2'>
+                Click here to checkout the i-tweet repo on github 
+                </Link>
             </p>
-            
         </div>
     );
-    }
+}
+
 export default About2;
