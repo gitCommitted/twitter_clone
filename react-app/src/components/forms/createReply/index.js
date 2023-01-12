@@ -26,27 +26,17 @@ function ReplyCreateForm({ setShowModal, tweetId, refreshTweet }) {
         setValidationErrors(res.errors)
       };
       return res
-      })
-      .then((res) => {
-        if (!res.errors) {
+    })
+    .then((res) => {
+      if (!res.errors) {
         refreshTweet();
-        }
-        return res;
-      })
-      .then((res) => {
-        if (!res.errors) {
         refreshTweet();
-        }
-        return res;
-      })
-      .then((res) => {
-        if (!res.errors) {
         setShowModal(false);
-        }
-        return res;
+      }
+      return res;
       })
-
-      return createdReply;
+    
+    return createdReply;
   }
 
   return (

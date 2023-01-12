@@ -1,15 +1,12 @@
-import './createTweet.css';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import './createTweet.css';
+import React, {  useState } from 'react';
+import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { fetchCreateTweets, fetchAllTweets, fetchTweet } from '../../../store/tweets';
-import {Modal} from '../../context/modal';
+import { fetchCreateTweets, fetchTweet } from '../../../store/tweets';
 
 function TweetCreateForm({ setShowModal, refreshTweet }) {
   const dispatch = useDispatch();
   const history = useHistory()
-
-
   const [body, setBody] = useState('');
   const [image, setImage] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
@@ -17,37 +14,26 @@ function TweetCreateForm({ setShowModal, refreshTweet }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-
     formData.append('body', body)
     formData.append('image', image)
     
     const createdTweet = await dispatch(fetchCreateTweets(formData))
     .then((res) => {
-      // console.log('res', res.errors)
       if (res && res.errors) {
         setValidationErrors(res.errors)
       } else {
         setShowModal(false)
       }
       return res
-      })
-      .then((res) => {
-        if (!res.errors) {
-        dispatch(fetchTweet(res.id));
-        }
-        return res;
-       })
-      .then((res) => {
-        if (!res.errors) {
-       history.push(`/tweets/${res?.id}`);
-        }
-      })
-      // .catch(async (res) => {
-      //   const data = await res.json();
-      //   ;
-      // })
-
-      return createdTweet;
+    })
+    .then((res) => {
+      if (!res.errors) {
+      dispatch(fetchTweet(res.id));
+      history.push(`/tweets/${res?.id}`);
+      }
+      return res;
+    })
+    return createdTweet;
   }
 
   return (

@@ -108,7 +108,7 @@ function UsersList() {
     <div id='user-feature'>
       {sessionUser && 
       <div>
-      <h3 className='userh3'>Other Users To Watch</h3>
+      <h3 className='userh3'>Popular i-tweet users</h3>
       <ul>
         {
           users.map(user => {
