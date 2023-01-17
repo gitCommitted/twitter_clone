@@ -41,8 +41,10 @@ a {
 }
 nav {
   display: inline-block;
-  padding-left: 15%;
-  padding-right: 4%;
+  position: fixed;
+ 
+  padding-left: 20%;
+  padding-right: 1%;
   height: 100%;
   align-items: start;
   vertical-align: top;
@@ -56,6 +58,7 @@ nav {
   border-top: none;
   margin: 0 14px;
   padding-top: 20px;
+  margin-left: 30%;
 }
 #user-feature {
   display: inline-block;
@@ -295,9 +298,13 @@ i{
     padding-left: 5%;
 }
 }
-@media (max-width: 1275px) {
+@media (max-width: 1340px) {
   nav {
     padding-left: 1px;
+    padding-right: 5px;
+}
+#mid {
+  margin-left: 15%;
 }
   
 }
@@ -322,6 +329,9 @@ nav {
 #bars > ul > a {
   padding-left: 0px;
 }
+#mid {
+  margin-left: 7% ;
+}
 }
 
 @media (max-width: 930px) {
@@ -334,6 +344,7 @@ nav {
   
   #mid {
     padding-left: 0px;
+    margin-left: 70px;
     max-width: 450px;
   }
 }
