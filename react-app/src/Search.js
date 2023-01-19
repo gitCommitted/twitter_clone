@@ -48,7 +48,7 @@ const Search = () => {
     // })
 
 
-    const returnResults = userResults?.slice(0,3)?.map((user) => {
+    const returnResults = userResults?.map((user) => {
         return (
             <div className="search-profile-div pointer"
                 key={user?.id}
@@ -69,12 +69,28 @@ const Search = () => {
         e.preventDefault();
 
     };
+    const closeButton = () => {
+        return (
+            <>
+  
+                <button className="close-button" 
+                onClick={() => {
+                    setSearchResults('')
+                    setSearch('')
+                    setClicked(false)
+                }}>
+                X</button>
+            </>
+        );
+    };
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <div className="search-user-styling">
                     <div className="mag-glass">
-                    <input
+                    
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <input
                         type='text'
                         className="hidden-input"
                         value={search}
@@ -83,14 +99,14 @@ const Search = () => {
                         onClick={handleClick}
                         // onBlur={handleBlur}
                     />
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                   
                         </div>
                     
                      
                 </div>
             </form>
-
+            <div className={`closeb ${searchResults}`}>
+                {closeButton()}
+            </div>
             <div className={`search-popup ${searchResults}`}>
                 {returnResults}
             </div>

@@ -383,7 +383,8 @@ nav {
 .search-profile-div {
   display: block;
   align-items: start;
-  margin: 17px 0;
+  margin: 0;
+  padding: 7px;
   align-content: start;
 }
 
@@ -400,23 +401,61 @@ nav {
   display: inline-block;
   align-content: start;
   vertical-align: top;
-}
+  margin: 1px;
 
+}
+h5{
+  margin: 10px;
+}
 .search-popup {
-  padding: 10px 20px;
+  padding: 10px 10px;
   width: 334px;
-  max-height: 500px;
+  max-height: 200px;
   /* display: none; */
   visibility: hidden;
   z-index: 3;
   position: fixed;
   background-color: white;
   border-radius: 10px;
-  top: 55px;
+  top: 65px;
   box-shadow: 0 0 10px lightgray;
+  overflow-y: scroll;
+
+}
+.search-profile-div:hover{
+  background-color: #F5F8FA;
 }
 
+#mid > form > div > div > input{
+  padding-left: 60px;
+  
+}
+#mid > form > div > div > i{
+  margin-left: 20px;
+}
+.hidden-input {
+  height: 20px;
+}
+.closeb {
+  padding: 0;
+  width: 15px;
+  height: 30px;
+  /* display: none; */
+  visibility: hidden;
+  z-index: 3;
+  position: fixed;
+  background-color: white;
+  border-radius: 10px;
+  top: 21px;
+  box-shadow: 0 0 10px lightgray;
+  cursor: pointer;
+  color: red;
+}
 .results-active {
   /* display: block; */
   visibility: visible;
+}
+.close-button{
+  padding-left: 20px;
+  padding-right: 20px;
 }
