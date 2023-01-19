@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TweetListItem from '../tweet/tweetListItem';
 import MobileNav from '../NavBar/MobileNav';
+import Search from '../../Search';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Home = () => {
     const tweetR = tweets.reverse();
     return (
         <div id='mid'>
+        <Search />
         <h3>Home</h3>
         
             {tweets.map((tweet) => (
