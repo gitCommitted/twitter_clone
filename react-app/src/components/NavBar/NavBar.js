@@ -103,8 +103,8 @@ const NavBar = () => {
         </li>} */}
         {isLoggedIn &&
         <li>
-          <NavLink to='/profile' exact={true} activeClassName='active'>
-          <i className="fa-solid fa-user"></i>   Profile
+          <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+          <i className="fa-solid fa-user"></i>   My Profile
           </NavLink>
         </li>}
         {isLoggedIn && 

@@ -3,23 +3,29 @@ import { useParams } from 'react-router-dom';
 import Search from '../Search';
 import UsersNav from './UsersNav';
 import UserTweets from './UsersTweets';
+import { fetchGetUserById } from '../store/session';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function User() {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const { userId }  = useParams();
-
-  useEffect(() => {
-    if (!userId) {
-      return;
+  const dispatch = useDispatch();
+  const refreshUser = () => {
+    dispatch(fetchGetUserById(userId));
     }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
+  useEffect(() => {
+    refreshUser();
+    // if (!userId) {
+    //   return;
+    // }
+    // (async () => {
+    //   const response = await fetch(`/api/users/${userId}`);
+    //   const user = await response.json();
+    //   setUser(user);
+    // })();
   }, [userId]);
-
+  const user = useSelector((state) => state.session?.userById);
   if (!user) {
     return null;
   }
