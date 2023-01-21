@@ -33,7 +33,7 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
         <div className='tlist-detail'>
           {sessionUser && (
         // <div className='t-user-box'>
-        <NavLink className="t-user-home" to={`/tweets/${tweet?.id}`}>
+        <NavLink className="t-user-home" to={`/users/${tweet?.userId}`}>
         {tweet?.userPic &&
           <img
           className='profile-pic'
@@ -88,19 +88,17 @@ function TweetListItem({tweet, refreshTweet, refreshReply}) {
        
 
         {sessionUser && (
-        <div>
-        <NavLink className="t-body" to={`/tweets/${tweet?.id}`}>{tweet?.body}</NavLink>
-        </div>)}
-        {sessionUser && (
-        <div>
-        <NavLink className="t-image-box" to={`/tweets/${tweet?.id}`}>
+      
+        <NavLink className="t-body" to={`/tweets/${tweet?.id}`}>{tweet?.body}
+        <div className="t-image-box" >
         <img
             className='image-pic'
             src={tweet?.image}
             alt={tweet?.image}
             />
+        </div>
         </NavLink>
-        </div>)}
+       )}
         {sessionUser && (
         <div className="qli-link" onClick={handleLike}>
             <Link className='t-likes'>

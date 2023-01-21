@@ -29,7 +29,7 @@ function Tweet({tweet, refreshTweet}) {
     return (
       <div className='t-container'>
         <div className='t-detail'>
-          <div className='t-user'>
+          <NavLink to={`/users/${tweet?.userId}`} className='t-user'>
             {tweet?.userPic &&
           <img
           className='profile-pic'
@@ -43,7 +43,7 @@ function Tweet({tweet, refreshTweet}) {
           <div className='name-at'>
           @{tweet?.username}
           </div>
-          </span></div>
+          </span></NavLink>
           <div className='t-body-detail'>{tweet?.body}</div>
           <div className='t-image-box'>
             <img

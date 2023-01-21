@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Search from '../Search';
 import UsersNav from './UsersNav';
 
 function User() {
@@ -23,6 +24,7 @@ function User() {
 
   return (
     <div id='mid'>
+      <Search />
       <h3>User Profile</h3>
     <UsersNav current='deets' userId={userId}/>
     <ul className='userD'>

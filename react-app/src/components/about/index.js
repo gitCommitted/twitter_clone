@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Search from '../../Search';
 
 const About = () => {
     return (
         <div id='mid'>
+            <Search />
             <h3>About i-tweet</h3>
             <p className='intro'>
             i-tweet is a twitter clone. It is a full-stack web application with a RESTful API backend using React, Redux, JavaScript, CSS, HTML, Python and more. 

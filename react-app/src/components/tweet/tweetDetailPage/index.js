@@ -8,6 +8,7 @@ import { fetchTweet } from '../../../store/tweets';
 import Reply from '../../reply';
 import { Modal } from '../../context/modal';
 import ReplyCreateForm from '../../forms/createReply';
+import Search from '../../../Search';
 
 
 const TweetDetails = () => {
@@ -32,6 +33,7 @@ const TweetDetails = () => {
 
   return (
     <div className='tdp-container' id='mid'>
+      <Search />
       <h3>Tweet Details</h3>
       <Tweet tweet={tweet.one_tweet} refreshTweet={refreshTweet}/>
       <div className='replyButton'>

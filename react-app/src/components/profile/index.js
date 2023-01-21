@@ -9,6 +9,7 @@ import { fetchGetUserReplies } from '../../store/reply';
 import Reply from '../reply';
 import Reply2 from '../reply/index2';
 import ProfileNav from './profileNav';
+import Search from '../../Search';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const Profile = () => {
 // console.log()
     return (
         <div id='mid'>
+            <Search />
             <h3>My Profile</h3>
             <ProfileNav current='deets'/>
     <ul className='pro1'>
