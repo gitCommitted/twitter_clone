@@ -4,6 +4,7 @@ import Search from '../Search';
 import UsersNav from './UsersNav';
 import UserTweets from './UsersTweets';
 
+
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
@@ -26,23 +27,26 @@ function User() {
   return (
     <div id='mid'>
       <Search />
-      <h3>User Profile</h3>
-    
+      <h3>{user?.username}'s Profile</h3>
+    {/* <div className='background'>
+
+    </div> */}
     <div className='t-user' id='profile'>
     {user?.pic &&
         <img
-            className='profile-pic'
+            className='profile-pic-user'
             src={user?.pic}
             alt={user?.pic}
             />}
           {!user?.pic  &&
-          <i className="fa-solid fa-circle-user"></i>}
-          <span className='name-box'>
+          <i className="fa-solid fa-circle-user" id="pic-user"></i>}
+          </div>
+          {/* <span className='name-box'>
           {user.username}
           <div className='name-at'>
           @{user.username}
           </div>
-          </span></div>
+          </span> */}
           <UsersNav current='tweets' userId={userId}/>
           <UserTweets />
     </div>

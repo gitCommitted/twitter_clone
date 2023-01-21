@@ -472,4 +472,31 @@ h5{
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #E1E8ED;
+  background-image: url("background.avif");
+  background-size: contain;
+  height: 100px;
+}
+.background {
+  background-image: url("background.avif");
+  background-size: contain;
+  height: 200px;
+}
+.profile-pic-user {
+  border-radius: 50%;
+  height: 100px;
+  border: 3px solid white;
+  align-self: center;
+  margin-top: 135px;
+}
+#pic-user {
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: white;
+  align-self: center;
+  margin-top: 135px;
+  font-size: 100px;
+  padding-right: 0px;
+}
+.profile-nav{
+  padding-top: 50px;
 }
