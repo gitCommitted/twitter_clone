@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoLoginForm from './DemoLoginOnLoginForm';
 
 const LoginForm = ({ setShowModal }) => {
   const [errors, setErrors] = useState([]);
@@ -67,6 +68,7 @@ const LoginForm = ({ setShowModal }) => {
         <button type='submit' className='login-btn modal-btn modal-submit-btn'>
           Login
         </button>
+       <DemoLoginForm setShowModal={setShowModal}/>
       </div>
     </form>
   );

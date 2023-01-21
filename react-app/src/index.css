@@ -459,3 +459,11 @@ h5{
   padding-left: 20px;
   padding-right: 20px;
 }
+.demoLogin {
+  color: white;
+  padding-top: 20px;
+}
+#modal-content > form > div:nth-child(3) > div > a {
+  color: white;
+  padding-top: 20px;
+}
