@@ -467,3 +467,9 @@ h5{
   color: white;
   padding-top: 20px;
 }
+#profile {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E1E8ED;
+}

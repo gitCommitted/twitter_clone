@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Search from '../Search';
 import UsersNav from './UsersNav';
+import UserTweets from './UsersTweets';
 
 function User() {
   const [user, setUser] = useState({});
@@ -26,28 +27,24 @@ function User() {
     <div id='mid'>
       <Search />
       <h3>User Profile</h3>
-    <UsersNav current='deets' userId={userId}/>
-    <ul className='userD'>
-      <li>
-      {user?.pic &&
+    
+    <div className='t-user' id='profile'>
+    {user?.pic &&
         <img
             className='profile-pic'
             src={user?.pic}
             alt={user?.pic}
             />}
-      {!user?.pic  &&
+          {!user?.pic  &&
           <i className="fa-solid fa-circle-user"></i>}
-      </li>
-      <li>
-        <strong>User Id: </strong> {userId}
-      </li>
-      <li>
-        <strong>Username: </strong> {user.username}
-      </li>
-      <li>
-        <strong>Email: </strong> {user.email}
-      </li>
-    </ul>
+          <span className='name-box'>
+          {user.username}
+          <div className='name-at'>
+          @{user.username}
+          </div>
+          </span></div>
+          <UsersNav current='tweets' userId={userId}/>
+          <UserTweets />
     </div>
   );
 }

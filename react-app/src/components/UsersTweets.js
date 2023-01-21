@@ -50,9 +50,7 @@ function UserTweets() {
 
   return (
   
-    <div id='mid'>
-      <h3>User Profile</h3>
-    <UsersNav current='tweets' userId={userId}/>
+    <>
     {tweetsRes.length > 0 ?
     
     tweets.map((tweet) => {
@@ -65,7 +63,7 @@ function UserTweets() {
             </div>
     }
     
-    </div>   
+    </>   
     
     
 

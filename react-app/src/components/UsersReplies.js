@@ -5,6 +5,7 @@ import UsersNav from './UsersNav';
 import { useSelector, useDispatch} from 'react-redux';
 import { fetchGetUserRepliesById, getUserRepliesById } from '../store/reply';
 import Reply2 from './reply/index2'
+import Search from '../Search'
 
 
 function UserReplies() {
@@ -46,8 +47,25 @@ function UserReplies() {
   return (
   
     <div id='mid'>
+       <Search />
       <h3>User Profile</h3>
-    <UsersNav current='replies' userId={userId}/>
+    
+    <div className='t-user' id='profile'>
+    {user?.pic &&
+        <img
+            className='profile-pic'
+            src={user?.pic}
+            alt={user?.pic}
+            />}
+          {!user?.pic  &&
+          <i className="fa-solid fa-circle-user"></i>}
+          <span className='name-box'>
+          {user.username}
+          <div className='name-at'>
+          @{user.username}
+          </div>
+          </span></div>
+          <UsersNav current='replies' userId={userId}/>
     {replies.length > 0 ?
     
     replies.map((reply) => {
