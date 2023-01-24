@@ -472,12 +472,12 @@ h5{
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #E1E8ED;
-  background-image: url("background.avif");
+  background-image: url("https://itweetbucket.s3.amazonaws.com/1674525718869.avif");
   background-size: contain;
   height: 100px;
 }
 .background {
-  background-image: url("background.avif");
+  background-image: url('https://itweetbucket.s3.amazonaws.com/1674525718869.avif');
   background-size: contain;
   height: 200px;
 }
